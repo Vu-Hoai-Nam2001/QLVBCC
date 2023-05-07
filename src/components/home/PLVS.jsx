@@ -25,7 +25,7 @@ const data = {
     SVSNCB: "234234",
 }
 export default function Index(props) {
-    const [datasv, setDatasv] = useState({})
+    const [datasv, setDatasv] = useState([])
 
     const { getToken } = useAuth();
     useEffect(() => {
@@ -62,7 +62,8 @@ export default function Index(props) {
                     <p>Tên: {sinhvien.ten}</p>
                     <p>Mã lớp: {sinhvien.malop}</p>
                     <p>Nơi sinh: {sinhvien.noisinh}</p>
-                </div>))}</h3>
+                </div>
+            ))}</h3>
             <div className="flex justify-between mt-[30px]">
                 <div className="flex">
                     <img
