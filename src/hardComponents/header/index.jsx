@@ -1,5 +1,7 @@
 import "../../App.css";
 import logo from "../../assets/logohpu.png";
+import { useClerk } from "@clerk/clerk-react";
+
 
 
 
@@ -46,6 +48,7 @@ import logo from "../../assets/logohpu.png";
 // ];
 
 export default function Index() {
+  const { signOut } = useClerk();
   return (
     <header className="flex h-[85px] bg-sky-600 justify-between">
       <div className="flex">
@@ -60,7 +63,7 @@ export default function Index() {
         </div>
       </div>
       <div className="text-white mt-[30px] pr-[20px] font-bold">
-        <a href="#">Đăng nhập</a>
+        <button onClick={() => signOut()}>Đăng xuất</button>
       </div>
     </header>
   );
