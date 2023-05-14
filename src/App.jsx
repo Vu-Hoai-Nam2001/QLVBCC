@@ -6,7 +6,8 @@ import Header from "./hardComponents/header";
 import Footer from "./hardComponents/footer";
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 const Home = lazy(() => import("./components/home"));
-const Edit = lazy(() => import("./components/edit"));
+const Teacher = lazy(() => import("./components/teacher"));
+const Student = lazy(() => import("./components/student"));
 
 function Hard() {
   return (
@@ -26,13 +27,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Hard />}>
           <Route path="/" element={<Navigate to={"/home"} />} />
-          <Route path="/home" element={<>
-            <SignedIn><Home/></SignedIn>
-            <SignedOut><RedirectToSignIn /></SignedOut>
-          </>} />
-          <Route path="/edit" element={
+          <Route path="/home" element={<Home />} />
+          <Route path="/teacher" element={
            <>
-            <SignedIn><Edit/></SignedIn>
+            <SignedIn><Teacher/></SignedIn>
+            <SignedOut><RedirectToSignIn /></SignedOut>
+           </>
+          }/>
+          <Route path="/student" element={
+           <>
+            <SignedIn><Student/></SignedIn>
             <SignedOut><RedirectToSignIn /></SignedOut>
            </>
           }/>

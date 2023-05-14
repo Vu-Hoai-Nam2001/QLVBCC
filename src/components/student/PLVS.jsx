@@ -2,7 +2,7 @@ import "../../App.css";
 import logo from "../../assets/logo2.png";
 import Table from "./Table"
 import { useEffect, useState } from "react"
-//import { useAuth } from "@clerk/clerk-react";
+import { useAuth, useClerk } from "@clerk/clerk-react";
 
 const data = {
     "name": "Hoài Nam",
@@ -24,51 +24,46 @@ const data = {
     SHVB: "123123",
     SVSNCB: "234234",
 }
-export default function Index(props) {
+
+export default function Index() {
     const [datasv, setDatasv] = useState([])
+    //lấy tổng số tín chỉ
+    //  const [tinchi, setTinchi] = useState(0)
+    // const handleLaytongtinchi = (data) => {
+    //     setTinchi(data);
+    //   };
+    //lấy trung bình toàn khóa
+    // const [tbtk, setTbtk] = useState(0)
+    // const handleLaytbtk = (data) => {
+    //     setTbtk(data);
+    //   };
 
- //   const { getToken } = useAuth();
-
+    const {user} = useClerk();
+    console.log(user.publicMetadata.masv)
+    const { getToken } = useAuth();
     useEffect(() => {
-        fetch(`https://qlvbcc.hasura.app/api/rest/get_ttsv_sohieubang/${props.data}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c'
-            }
-        })
-            .then(response => response.json())
-            .then(datasv => {
-                setDatasv(datasv.f_get_ttsv2
-                    )
+        console.log("gọi lại api")
+        const callApi = async () => {
+
+            await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH_MSV}${user.publicMetadata.masv}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${await getToken({
+                        template: import.meta.env.VITE_TEMPLATE_ABOUT_STUDENT
+                    })}`,
+                },
+                // body:JSON.stringify({masv:'1912101003'})
+
             })
-            .catch(error => {
-                console.error(error); // Handle any errors
-            });
-    }, [props.data])
+                .then(response => response.json())
+                .then(datasv => {
+                    setDatasv(datasv.f_get_ttsv)
 
-    // useEffect(() => {
-    //     console.log("gọi lại api")
-    //     const callApi = async () => {
-
-    //         await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH_MSV}${props.data}`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${await getToken({
-    //                     template: import.meta.env.VITE_TEMPLATE_STUDENT_QLVBCC
-    //                 })}`,
-    //             },
-    //             // body:JSON.stringify({masv:'1912101003'})
-
-    //         })
-    //             .then(response => response.json())
-    //             .then(datasv => {
-    //                 setDatasv(datasv.f_get_ttsv)
-
-    //             });
-    //     }
-    //     callApi();
-    // }, [props.data]);
+                });
+        }
+        callApi();
+    }, []);
     console.log(datasv)
 
     return (
@@ -123,14 +118,14 @@ export default function Index(props) {
                             <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
                         </div>
                     </div>
-                    <Table data={sinhvien.masinhvien} />
+                    <Table />
                     <div className="flex justify-between mt-[30px] ">
                         <div className="flex flex-col gap-[5px]">
                             <a >Tên đề tài tốt nghiệp: <span className="font-bold">{data.tendetaitotnghiep}</span></a>
 
-                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {data.DTBTK}</span></a>
+                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"></span></a>
 
-                            <a >Tổng số tín chỉ: <span className="font-bold">{data.TSTC}</span></a>
+                            <a >Tổng số tín chỉ: <span className="font-bold"></span></a>
 
                             <a >Xếp hạng tốt nghiệp: <span className="font-bold">{sinhvien.xeploaitotnghiep}</span> </a>
 

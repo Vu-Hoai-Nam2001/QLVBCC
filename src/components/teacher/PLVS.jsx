@@ -2,7 +2,7 @@ import "../../App.css";
 import logo from "../../assets/logo2.png";
 import Table from "./Table"
 import { useEffect, useState } from "react"
-//import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 
 const data = {
     "name": "Hoài Nam",
@@ -27,48 +27,30 @@ const data = {
 export default function Index(props) {
     const [datasv, setDatasv] = useState([])
 
- //   const { getToken } = useAuth();
-
+    const { getToken } = useAuth();
     useEffect(() => {
-        fetch(`https://qlvbcc.hasura.app/api/rest/get_ttsv_sohieubang/${props.data}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c'
-            }
-        })
-            .then(response => response.json())
-            .then(datasv => {
-                setDatasv(datasv.f_get_ttsv2
-                    )
+        console.log("gọi lại api")
+        const callApi = async () => {
+
+            await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH}${props.data}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${await getToken({
+                        template: import.meta.env.VITE_TEMPLATE_STUDENT_QLVBCC
+                    })}`,
+                },
+                // body:JSON.stringify({masv:'1912101003'})
+
             })
-            .catch(error => {
-                console.error(error); // Handle any errors
-            });
-    }, [props.data])
+                .then(response => response.json())
+                .then(datasv => {
+                    setDatasv(datasv.f_get_ttsv5)
 
-    // useEffect(() => {
-    //     console.log("gọi lại api")
-    //     const callApi = async () => {
-
-    //         await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH_MSV}${props.data}`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${await getToken({
-    //                     template: import.meta.env.VITE_TEMPLATE_STUDENT_QLVBCC
-    //                 })}`,
-    //             },
-    //             // body:JSON.stringify({masv:'1912101003'})
-
-    //         })
-    //             .then(response => response.json())
-    //             .then(datasv => {
-    //                 setDatasv(datasv.f_get_ttsv)
-
-    //             });
-    //     }
-    //     callApi();
-    // }, [props.data]);
+                });
+        }
+        callApi();
+    }, [props.data]);
     console.log(datasv)
 
     return (
@@ -126,7 +108,7 @@ export default function Index(props) {
                     <Table data={sinhvien.masinhvien} />
                     <div className="flex justify-between mt-[30px] ">
                         <div className="flex flex-col gap-[5px]">
-                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{data.tendetaitotnghiep}</span></a>
+                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>
 
                             <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {data.DTBTK}</span></a>
 
