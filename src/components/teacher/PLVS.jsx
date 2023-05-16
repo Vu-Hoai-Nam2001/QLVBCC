@@ -4,29 +4,10 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 import { useAuth } from "@clerk/clerk-react";
 
-const data = {
-    "name": "Hoài Nam",
-    sex: "Nam",
-    MSV: "191201003",
-    SoCCCD: "1029831",
-    Hinhthucdaotao: "Chính Quy",
-    TRinhDoDT: "THPT",
-    ngonngu: "Tiếng việt",
-    ngaysinh: "26/01/2001",
-    khoa: "k21",
-    chuyennganh: "CNTT",
-    ngaynhaphoc: "1/1/2019",
-    thoigiandaotao: "4 năm",
-    tendetaitotnghiep: "làm web",
-    DTBTK: "3",
-    TSTC: "118",
-    XHTN: "Khá",
-    SHVB: "123123",
-    SVSNCB: "234234",
-}
 export default function Index(props) {
     const [datasv, setDatasv] = useState([])
-
+    const [tinchi, setTinchi] = useState(0)
+    const [tbtk, setTbtk] = useState(0)
     const { getToken } = useAuth();
     useEffect(() => {
         console.log("gọi lại api")
@@ -105,14 +86,14 @@ export default function Index(props) {
                             <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
                         </div>
                     </div>
-                    <Table data={sinhvien.masinhvien} />
+                    <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi} setTbtk={setTbtk} />
                     <div className="flex justify-between mt-[30px] ">
                         <div className="flex flex-col gap-[5px]">
                             <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>
 
-                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {data.DTBTK}</span></a>
+                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {tbtk}</span></a>
 
-                            <a >Tổng số tín chỉ: <span className="font-bold">{data.TSTC}</span></a>
+                            <a >Tổng số tín chỉ: <span className="font-bold">{tinchi}</span></a>
 
                             <a >Xếp hạng tốt nghiệp: <span className="font-bold">{sinhvien.xeploaitotnghiep}</span> </a>
 

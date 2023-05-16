@@ -29,15 +29,15 @@ const columns = [
     }),
 
 ]
-export default function Index(props) {
+export default function Index({masinhvien,setTinchi,setTbtk}) {
     
     const [data, setData] = useState([])
     const { getToken } = useAuth();
     useEffect(() => {
-        console.log(`gọi lại api table msv${props.data}`)
+        console.log(`gọi lại api table msv${masinhvien}`)
         const callApi = async () => {
 
-            await fetch(`${import.meta.env.VITE_EDU_ALL_SCORE}${props.data}`, {
+            await fetch(`${import.meta.env.VITE_EDU_ALL_SCORE}${masinhvien}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +56,17 @@ export default function Index(props) {
         }
         callApi();
     }, []);
-    console.log(data)
+    
+    useEffect(() => {
+        if(data.length > 0){
+            setTinchi(data.reduce((total, current) => total + current.khoiluong, 0))
+            const a=data.reduce((total, current) => total + current.diemthang4, 0)/data.length
+            const b = a.toFixed(2)
+            setTbtk(b)
+
+        }
+    },[data])
+    
 
     // const [data, setData] = useState([])
     // useEffect(() => {
@@ -68,13 +78,13 @@ export default function Index(props) {
         getCoreRowModel: getCoreRowModel(),
     })
     return (
-        <div className="flex">
+        <div className="flex mt-[20px] text-left">
             {data.length > 0 ? <table className="w-[600px]">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
-                                <th className="p-[5px]" key={header.id}>
+                                <th className="pl-[10px] text-center" key={header.id}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
@@ -92,7 +102,7 @@ export default function Index(props) {
                             return (
                                 <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
                                     {row.getVisibleCells().map(cell => (
-                                        <td className="pl-[20px]" key={cell.id}>
+                                        <td className="pl-[10px] text-center" key={cell.id}>
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </td>
                                     ))}
@@ -110,7 +120,7 @@ export default function Index(props) {
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
-                                <th className="p-[5px]" key={header.id}>
+                                <th className="pl-[10px] text-center" key={header.id}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
@@ -128,7 +138,7 @@ export default function Index(props) {
                             return (
                                 <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
                                     {row.getVisibleCells().map(cell => (
-                                        <td className="pl-[20px]" key={cell.id}>
+                                        <td className="pl-[10px] text-center" key={cell.id}>
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </td>
                                     ))}

@@ -105,13 +105,13 @@ export default function Index(props) {
         getCoreRowModel: getCoreRowModel(),
     })
     return (
-        <div>
-            {data.length > 0 ? <table>
+        <div className="flex mt-[15px]">
+            {data.length > 0 ? <table className="w-[600px]">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
-                                <th className="p-[10px]" key={header.id}>
+                                <th className="pl-[10px] text-center" key={header.id}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
@@ -124,18 +124,92 @@ export default function Index(props) {
                     ))}
                 </thead>
                 <tbody>
-                    {table.getRowModel().rows.map(row => (
-                        <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
-                            {row.getVisibleCells().map(cell => (
-                                <td className="pl-[15px]" key={cell.id}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
+                    {table.getRowModel().rows.map(row => {
+                        if (row.id <= 24) {
+                            return (
+                                <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
+                                    {row.getVisibleCells().map(cell => (
+                                        <td className="pl-[10px] text-center" key={cell.id}>
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
+                                    ))}
+                                </tr>
+                            );
+                        } else {
+                            return null; // Bỏ qua các dòng với row.id > 25
+                        }
+                    })}
+                </tbody>
+            </table> : <></>}
+
+            {data.length > 0 ? <table className="w-[600px] ml-[20px]">
+                <thead>
+                    {table.getHeaderGroups().map(headerGroup => (
+                        <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
+                            {headerGroup.headers.map(header => (
+                                <th className="pl-[10px] text-center" key={header.id}>
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(
+                                            header.column.columnDef.header,
+                                            header.getContext()
+                                        )}
+                                </th>
                             ))}
                         </tr>
                     ))}
+                </thead>
+                <tbody>
+                    {table.getRowModel().rows.map(row => {
+                        if (row.id > 24) {
+                            return (
+                                <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
+                                    {row.getVisibleCells().map(cell => (
+                                        <td className="pl-[10px] text-center" key={cell.id}>
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
+                                    ))}
+                                </tr>
+                            );
+                        } else {
+                            return null; // Bỏ qua các dòng với row.id > 25
+                        }
+                    })}
                 </tbody>
             </table> : <></>}
 
         </div>
+        // <div>
+        //     {data.length > 0 ? <table>
+        //         <thead>
+        //             {table.getHeaderGroups().map(headerGroup => (
+        //                 <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
+        //                     {headerGroup.headers.map(header => (
+        //                         <th className="p-[10px]" key={header.id}>
+        //                             {header.isPlaceholder
+        //                                 ? null
+        //                                 : flexRender(
+        //                                     header.column.columnDef.header,
+        //                                     header.getContext()
+        //                                 )}
+        //                         </th>
+        //                     ))}
+        //                 </tr>
+        //             ))}
+        //         </thead>
+        //         <tbody>
+        //             {table.getRowModel().rows.map(row => (
+        //                 <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
+        //                     {row.getVisibleCells().map(cell => (
+        //                         <td className="pl-[15px]" key={cell.id}>
+        //                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        //                         </td>
+        //                     ))}
+        //                 </tr>
+        //             ))}
+        //         </tbody>
+        //     </table> : <></>}
+
+        // </div>
     )
 }

@@ -1,54 +1,16 @@
 import "../../App.css";
 import logo from "../../assets/logohpu.png";
-import { useClerk } from "@clerk/clerk-react";
-
-
-
-
-// const label = [
-//   {
-//     title: "Tìm màu sơn",
-//     sub: [
-//       {
-//         title: "example",
-//         path: "/example",
-//       },
-//       {
-//         title: "example",
-//         path: "/example",
-//       },
-//     ],
-//   },
-//   {
-//     title: "Chọn sản phẩm",
-//     sub: [
-//       {
-//         title: "example",
-//         path: "/example",
-//       },
-//       {
-//         title: "example",
-//         path: "/example",
-//       },
-//     ],
-//   },
-//   {
-//     title: "Ý tưởng",
-//     sub: [
-//       {
-//         title: "example",
-//         path: "/example",
-//       },
-//       {
-//         title: "example",
-//         path: "/example",
-//       },
-//     ],
-//   },
-// ];
+import { useClerk, useUser  } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Index() {
+  const { isSignedIn} = useUser() 
+  console.log(isSignedIn)
   const { signOut } = useClerk();
+  const navigate = useNavigate();
+  const handleLogIn = () => {
+    navigate("/signin");
+  };
   return (
     <header className="flex h-[85px] bg-sky-600 justify-between">
       <div className="flex">
@@ -62,9 +24,12 @@ export default function Index() {
           <h2>TRA CỨU VĂN BẰNG CHỨNG CHỈ</h2>
         </div>
       </div>
-      <div className="text-white mt-[30px] pr-[20px] font-bold">
+      {isSignedIn ? <div className="text-white mt-[30px] pr-[20px] font-bold">
         <button onClick={() => signOut()}>Đăng xuất</button>
-      </div>
+      </div> : <div className="text-white mt-[30px] pr-[20px] font-bold">
+        <button onClick={handleLogIn} >Đăng nhập</button>
+      </div> }
+      
     </header>
   );
 }

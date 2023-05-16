@@ -67,7 +67,7 @@ const columns = [
     }),
 
 ]
-export default function Index() {
+export default function Index({setTinchi,setTbtk}) {
     const { user } = useClerk();
     const [data, setData] = useState([])
     const { getToken } = useAuth();
@@ -94,9 +94,17 @@ export default function Index() {
         }
         callApi();
     }, []);
+
+    useEffect(() => {
+        if(data.length > 0){
+            setTinchi(data.reduce((total, current) => total + current.khoiluong, 0))
+            const a=data.reduce((total, current) => total + current.diemthang4, 0)/data.length
+            const b = a.toFixed(2)
+            setTbtk(b)
+        }
+    },[data])
     // const totaltinchi = data.reduce((total, current) => total + current.khoiluong, 0);
-    // console.log(totaltinchi)
-    // tongtinchi(totaltinchi);
+    // setTinchi(totaltinchi);
 
     // const trungbinhlDiem4 = data.reduce((total, current) => total + current.diemthang4, 0)/data.length;
     // console.log(trungbinhlDiem4)
@@ -118,7 +126,7 @@ export default function Index() {
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
-                                <th className="p-[5px]" key={header.id}>
+                                <th className="pl-[10px] text-center" key={header.id}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
@@ -136,7 +144,7 @@ export default function Index() {
                             return (
                                 <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
                                     {row.getVisibleCells().map(cell => (
-                                        <td className="pl-[20px]" key={cell.id}>
+                                        <td className="pl-[10px] text-center" key={cell.id}>
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </td>
                                     ))}
@@ -154,7 +162,7 @@ export default function Index() {
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
-                                <th className="p-[5px]" key={header.id}>
+                                <th className="pl-[10px] text-center" key={header.id}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
@@ -172,7 +180,7 @@ export default function Index() {
                             return (
                                 <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
                                     {row.getVisibleCells().map(cell => (
-                                        <td className="pl-[20px]" key={cell.id}>
+                                        <td className="pl-[10px] text-center" key={cell.id}>
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </td>
                                     ))}
