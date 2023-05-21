@@ -1,29 +1,29 @@
 import "../../App.css";
 import logo from "../../assets/logo2.png";
-import Table from "./Table"
+import Table from "./TableSTUDENT"
 import { useEffect, useState } from "react"
 import { useAuth, useClerk } from "@clerk/clerk-react";
 
-const data = {
-    "name": "Hoài Nam",
-    sex: "Nam",
-    MSV: "191201003",
-    SoCCCD: "1029831",
-    Hinhthucdaotao: "Chính Quy",
-    TRinhDoDT: "THPT",
-    ngonngu: "Tiếng việt",
-    ngaysinh: "26/01/2001",
-    khoa: "k21",
-    chuyennganh: "CNTT",
-    ngaynhaphoc: "1/1/2019",
-    thoigiandaotao: "4 năm",
-    tendetaitotnghiep: "làm web",
-    DTBTK: "3",
-    TSTC: "118",
-    XHTN: "Khá",
-    SHVB: "123123",
-    SVSNCB: "234234",
-}
+// const data = {
+//     "name": "Hoài Nam",
+//     sex: "Nam",
+//     MSV: "191201003",
+//     SoCCCD: "1029831",
+//     Hinhthucdaotao: "Chính Quy",
+//     TRinhDoDT: "THPT",
+//     ngonngu: "Tiếng việt",
+//     ngaysinh: "26/01/2001",
+//     khoa: "k21",
+//     chuyennganh: "CNTT",
+//     ngaynhaphoc: "1/1/2019",
+//     thoigiandaotao: "4 năm",
+//     tendetaitotnghiep: "làm web",
+//     DTBTK: "3",
+//     TSTC: "118",
+//     XHTN: "Khá",
+//     SHVB: "123123",
+//     SVSNCB: "234234",
+// }
 
 export default function Index() {
     const [datasv, setDatasv] = useState([])
@@ -121,7 +121,7 @@ export default function Index() {
                     <Table setTinchi={setTinchi} setTbtk={setTbtk}/>
                     <div className="flex justify-between mt-[30px] ">
                         <div className="flex flex-col gap-[5px]">
-                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{data.tendetaitotnghiep}</span></a>
+                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>
 
                             <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold">{tbtk}</span></a>
 

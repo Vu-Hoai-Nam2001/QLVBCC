@@ -2,73 +2,36 @@ import "../../App.css";
 import logo from "../../assets/logo2.png";
 import Table from "./Table"
 import { useEffect, useState } from "react"
-//import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 
-const data = {
-    "name": "Hoài Nam",
-    sex: "Nam",
-    MSV: "191201003",
-    SoCCCD: "1029831",
-    Hinhthucdaotao: "Chính Quy",
-    TRinhDoDT: "THPT",
-    ngonngu: "Tiếng việt",
-    ngaysinh: "26/01/2001",
-    khoa: "k21",
-    chuyennganh: "CNTT",
-    ngaynhaphoc: "1/1/2019",
-    thoigiandaotao: "4 năm",
-    tendetaitotnghiep: "làm web",
-    DTBTK: "3",
-    TSTC: "118",
-    XHTN: "Khá",
-    SHVB: "123123",
-    SVSNCB: "234234",
-}
-export default function Index({masv,setGetdata}) {
+export default function Index(props) {
     const [datasv, setDatasv] = useState([])
-
- //   const { getToken } = useAuth();
-
+    const [tinchi, setTinchi] = useState(0)
+    const [tbtk, setTbtk] = useState(0)
+    const { getToken } = useAuth();
     useEffect(() => {
-        fetch(`https://qlvbcc.hasura.app/api/rest/get_ttsv_sohieubang/${masv}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c'
-            }
-        })
-            .then(response => response.json())
-            .then(datasv => {
-                setDatasv(datasv.f_get_ttsv2
-                    )
+        console.log("gọi lại api")
+        const callApi = async () => {
+
+            await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH}${props.data}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${await getToken({
+                        template: import.meta.env.VITE_TEMPLATE_STUDENT_QLVBCC
+                    })}`,
+                },
+                // body:JSON.stringify({masv:'1912101003'})
+
             })
-            .catch(error => {
-                console.error(error); // Handle any errors
-            });
-    }, [masv])
-    setGetdata(datasv)
-    // useEffect(() => {
-    //     console.log("gọi lại api")
-    //     const callApi = async () => {
+                .then(response => response.json())
+                .then(datasv => {
+                    setDatasv(datasv.f_get_ttsv5)
 
-    //         await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH_MSV}${props.data}`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${await getToken({
-    //                     template: import.meta.env.VITE_TEMPLATE_STUDENT_QLVBCC
-    //                 })}`,
-    //             },
-    //             // body:JSON.stringify({masv:'1912101003'})
-
-    //         })
-    //             .then(response => response.json())
-    //             .then(datasv => {
-    //                 setDatasv(datasv.f_get_ttsv)
-
-    //             });
-    //     }
-    //     callApi();
-    // }, [props.data]);
+                });
+        }
+        callApi();
+    }, [props.data]);
     console.log(datasv)
 
     return (
@@ -123,14 +86,14 @@ export default function Index({masv,setGetdata}) {
                             <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
                         </div>
                     </div>
-                    <Table data={sinhvien.masinhvien} />
+                    <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi} setTbtk={setTbtk} />
                     <div className="flex justify-between mt-[30px] ">
                         <div className="flex flex-col gap-[5px]">
-                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{data.tendetaitotnghiep}</span></a>
+                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>
 
-                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {data.DTBTK}</span></a>
+                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {tbtk}</span></a>
 
-                            <a >Tổng số tín chỉ: <span className="font-bold">{data.TSTC}</span></a>
+                            <a >Tổng số tín chỉ: <span className="font-bold">{tinchi}</span></a>
 
                             <a >Xếp hạng tốt nghiệp: <span className="font-bold">{sinhvien.xeploaitotnghiep}</span> </a>
 

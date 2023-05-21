@@ -49,7 +49,7 @@ export default function SignIn() {
     if (email === "") {
       setProgress("blankEmail");
       setLoading(false);
-    } else if (email.includes("@hpu.edu.vn")) {
+    } else if (email.length>0) {
       // var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       // Check the sign in response to
       // decide what to do next.
@@ -159,11 +159,11 @@ export default function SignIn() {
               />
               {progress === "blankEmail" ? (
                 <p style={{ color: "red", fontSize: "14px" }}>
-                  Vui lòng nhập email hoặc mã giáo viên!
+                  Vui lòng nhập email !
                 </p>
               ) : progress === "Couldn't find your account." ? (
                 <p style={{ color: "red", fontSize: "14px" }}>
-                  Email hoặc mã giáo viên không tồn tại!
+                  Email không tồn tại!
                 </p>
               ) : (
                 <></>

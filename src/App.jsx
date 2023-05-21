@@ -26,7 +26,7 @@ function App() {
 
       <Routes>
         <Route path="/signin" element={<>
-          <SignedIn><Navigate to={'/home'} replace/></SignedIn>
+          <SignedIn><Navigate to={'/teacher'} replace/></SignedIn>
           <SignedOut><SignIn /></SignedOut>
         </>} />
         <Route path="/" element={<Hard />}>
@@ -38,7 +38,7 @@ function App() {
           <Route path="/teacher" element={
             <>
               <SignedIn><Teacher /></SignedIn>
-              <SignedOut><RedirectToSignIn /></SignedOut>
+              <SignedOut><Navigate to={'/home'} replace/></SignedOut>
             </>
           } />
           <Route path="/student" element={

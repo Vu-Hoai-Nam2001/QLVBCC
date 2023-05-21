@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs"
 import PLVB from "./PLVS"
 import { useState} from "react"
 import {  useClerk } from "@clerk/clerk-react";
-// import Table from "./Table"
+
 
 export default function Index() {
   const {user} = useClerk();
@@ -11,29 +11,8 @@ export default function Index() {
   const [show, setShow] = useState(false);
   
   const [masv, setMasv] = useState('');
-  
-  // const {getToken} = useAuth();
-  // useEffect(() => {
-  //   const callApi = async() => {
-
-  //     await fetch(`https://qlvbcc.hasura.app/api/rest/get_tensv/1912101003`, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${await getToken({
-  //           template: `hasura-qlvbcc`
-  //         })}`,
-  //       },
-  //       // body:JSON.stringify({masv:'1912101003'})
-
-  //     })
-  //       .then(response => response.json())
-  //       .then((res) => {
-  //         console.log(res);
-  //       });
-  //   }
-  //   callApi();
-  // }, []);
+  const [masv2, setMasv2] = useState('');
+  const [getdata, setGetdata] = useState([]);
   return (
     <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[30px]">
       <div className="flex justify-end">
@@ -44,7 +23,8 @@ export default function Index() {
           </span>
         </div>
         <button onClick={() => {
-          if( masv !== ''){setShow(true)}
+          if( masv !== ''){setShow(true)
+            setMasv2(masv)}
           else setShow(false)
           
           
@@ -53,8 +33,12 @@ export default function Index() {
       </div>
       {/* <button onClick={()=>{window.location.href = "/edit";}} className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
        hover:bg-red-600 hover:text-white">Sửa</button> */}
-      {show && masv !== '' &&  <PLVB data={masv}/>} 
+      {show &&   <PLVB masv={masv2} setGetdata={setGetdata}/>} 
       {/* <Table/> */}
+      {getdata.length===0?<div className=" h-[365px]"> </div>:<></>}
+      
+      
+
     </main>
   );
 }
