@@ -12,6 +12,7 @@ export default function Index() {
   const [masv2, setMasv2] = useState('');
   const [role, setRole] = useState('3');
 
+  
 
   // const {getToken} = useAuth();
   // useEffect(() => {
@@ -43,24 +44,24 @@ export default function Index() {
     console.log("gọi lại api")
     const callApi = async () => {
 
-      await fetch(`https://qlvbcc.hasura.app/api/rest/get_role/${user.publicMetadata.magv}`, {
+      await fetch(`${import.meta.env.VITE_API_GET_ROLE}${user.publicMetadata.magv}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c',
+          'x-hasura-admin-secret': `${import.meta.env.VITE_VALUE_HASURA}`,
         },
         // body:JSON.stringify({masv:'1912101003'})
 
       })
         .then(response => response.json())
         .then(datasv => {
-          setRole(datasv.users)
+          setRole(datasv.users[0].role_id)
 
         });
     }
     callApi();
   }, [user.publicMetadata.magv]);
-console.log(role[0].role_id)
+console.log(role)
   return (
     <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px]">
       {magv !== undefined ? <><div className="flex justify-end">
@@ -81,13 +82,14 @@ console.log(role[0].role_id)
         }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] 
       border border-black hover:bg-red-600 hover:text-white ">TÌm kiếm</button>
       </div>
-        {role[0].role_id === 2 ? <> <button onClick={() => { window.location.href = "/edit"; }} className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
+        {role === 2 ? <> <button onClick={() => { window.location.href = "/edit"; }} className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
        hover:bg-red-600 hover:text-white">Sửa</button></> : <></>}
 
         
 
         {show && <PLVB data={masv2} />}
         {/* <Table/> */}
+        
       </> : <>
         <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px]">
           <PLVBST />

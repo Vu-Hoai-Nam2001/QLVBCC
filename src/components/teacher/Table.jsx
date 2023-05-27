@@ -66,6 +66,8 @@ export default function Index({masinhvien,setTinchi,setTbtk}) {
 
         }
     },[data])
+
+   
     
 
     // const [data, setData] = useState([])
@@ -79,7 +81,7 @@ export default function Index({masinhvien,setTinchi,setTbtk}) {
     })
     return (
         <div className="flex mt-[20px] text-left">
-            {data.length > 0 ? <table className="w-[600px]">
+            {data.length > 0 ? <table className="w-[630px]">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
@@ -115,7 +117,7 @@ export default function Index({masinhvien,setTinchi,setTbtk}) {
                 </tbody>
             </table> : <></>}
 
-            {data.length > 0 ? <table className="w-[600px] ml-[20px]">
+            {data.length > 0 ? <table className="w-[630px] ml-[20px]">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>

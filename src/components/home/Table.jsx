@@ -6,7 +6,7 @@ import {
     getCoreRowModel,
     useReactTable,
 } from '@tanstack/react-table'
-import { useAuth } from "@clerk/clerk-react";
+// import { useAuth } from "@clerk/clerk-react";
 // const defaultData = [
 //     {
 //         firstName: 'tanner',
@@ -69,19 +69,19 @@ const columns = [
 export default function Index(props) {
     
     const [data, setData] = useState([])
-    const { getToken } = useAuth();
+    // const { getToken } = useAuth();
     useEffect(() => {
         console.log(`gọi lại api table msv${props.data}`)
         const callApi = async () => {
 
             await fetch(`${import.meta.env.VITE_EDU_ALL_SCORE}${props.data}`, {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${await getToken({
-                        template: import.meta.env.VITE_TEMPLATE_EDU_QLVBCC
-                    })}`,
-                },
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${await getToken({
+                //         template: import.meta.env.VITE_TEMPLATE_EDU_QLVBCC
+                //     })}`,
+                // },
                 // body:JSON.stringify({masv:'1912101003'})
 
             })

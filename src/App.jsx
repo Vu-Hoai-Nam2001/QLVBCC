@@ -4,10 +4,47 @@ import { lazy, Suspense } from "react";
 import Header from "./hardComponents/header";
 import Footer from "./hardComponents/footer";
 import SignIn from "./hardComponents/signIn";
-import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
+import SignInADMIN from "./admin/hardComponent/login";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 const Home = lazy(() => import("./components/home"));
 const Teacher = lazy(() => import("./components/teacher"));
 const Student = lazy(() => import("./components/student"));
+const Edit = lazy(() => import("./components/edit"));
+
+// ADMIN IMPORT
+import HeaderAdmin from "./admin/hardComponent/header";
+import SideBar from "./admin/hardComponent/sideBar";
+
+const Role = lazy(() => import("./admin/Component/role"));
+
+const Test = lazy(() => import("./admin/Component/test"));
+
+function HardAdmin() {
+  return (
+    // <>
+    //   <HeaderAdmin />
+    //   <SideBar/>
+    //   <Suspense fallback={<p>Loading...</p>}>
+    //     <Outlet />
+    //   </Suspense>
+
+    // </>
+    <div className="flex flex-col">
+      <HeaderAdmin />
+      <div className="flex">
+        <div className="mt-[80px] h-[300px] w-56 bg-gray-200">
+          <SideBar />
+        </div>
+        <div className="flex-grow">
+          <Suspense fallback={<p>Loading...</p>}>
+            <Outlet />
+          </Suspense>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 function Hard() {
   return (
@@ -26,27 +63,42 @@ function App() {
 
       <Routes>
         <Route path="/signin" element={<>
-          <SignedIn><Navigate to={'/teacher'} replace/></SignedIn>
+          <SignedIn><Navigate to={'/teacher'} replace /></SignedIn>
           <SignedOut><SignIn /></SignedOut>
         </>} />
         <Route path="/" element={<Hard />}>
           <Route path="/" element={<Navigate to={"/home"} />} />
           <Route path="/home" element={<Home />} />
-
-
-
           <Route path="/teacher" element={
             <>
               <SignedIn><Teacher /></SignedIn>
-              <SignedOut><Navigate to={'/home'} replace/></SignedOut>
+              <SignedOut><Navigate to={'/home'} replace /></SignedOut>
             </>
           } />
           <Route path="/student" element={
             <>
-              <SignedIn><Student /></SignedIn>
-              <SignedOut><RedirectToSignIn /></SignedOut>
+            <Student />
+              {/* <SignedIn><Student /></SignedIn>
+              <SignedOut><RedirectToSignIn /></SignedOut> */}
             </>
           } />
+          <Route path="/edit" element={<>
+            <SignedIn><Edit /></SignedIn>
+            <SignedOut><Navigate to={'/home'} replace /></SignedOut>
+          </>} />
+        </Route>
+        <Route path="/signinadmin" element={<>
+          <SignedIn><Navigate to={'/admin'} replace /></SignedIn>
+          <SignedOut><SignInADMIN /></SignedOut>
+        </>} />
+        <Route path="/admin" element={<HardAdmin />}>
+          <Route path="role" element={
+            <>
+              <SignedIn><Role /></SignedIn>
+              <SignedOut><Navigate to={'/signinadmin'} replace /></SignedOut>
+            </>} />
+          <Route path="Test" element={<Test />} />
+
         </Route>
 
       </Routes>

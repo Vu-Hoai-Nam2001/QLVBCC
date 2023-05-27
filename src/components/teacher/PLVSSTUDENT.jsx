@@ -4,26 +4,7 @@ import Table from "./TableSTUDENT"
 import { useEffect, useState } from "react"
 import { useAuth, useClerk } from "@clerk/clerk-react";
 
-// const data = {
-//     "name": "Hoài Nam",
-//     sex: "Nam",
-//     MSV: "191201003",
-//     SoCCCD: "1029831",
-//     Hinhthucdaotao: "Chính Quy",
-//     TRinhDoDT: "THPT",
-//     ngonngu: "Tiếng việt",
-//     ngaysinh: "26/01/2001",
-//     khoa: "k21",
-//     chuyennganh: "CNTT",
-//     ngaynhaphoc: "1/1/2019",
-//     thoigiandaotao: "4 năm",
-//     tendetaitotnghiep: "làm web",
-//     DTBTK: "3",
-//     TSTC: "118",
-//     XHTN: "Khá",
-//     SHVB: "123123",
-//     SVSNCB: "234234",
-// }
+
 
 export default function Index() {
     const [datasv, setDatasv] = useState([])
@@ -87,10 +68,13 @@ export default function Index() {
                             <a className="font-bold underline">Độc lập - Tự do - Hạnh phúc</a>
                         </div>
                     </div>
+                    <div  className="flex flex-col mr-[8%]">
+                            <img src={sinhvien.qrcode} alt="Ảnh" className="h-auto w-[100px] self-end" />
+                    </div>
                     <div className="flex flex-col justify-center items-center mt-[50px]">
                         <h2 className="font-bold text-[30px] ">PHỤ LỤC VĂN BẰNG</h2>
                     </div>
-                    <div className="flex  ml-[30px]  w-[100%] mt-[50px] ">
+                    <div className="flex    w-[100%] mt-[60px] ">
                         <div className="flex flex-col w-[50%] gap-[5px]">
                             <a>Họ và tên: {sinhvien.hoten}</a>
 
@@ -118,7 +102,7 @@ export default function Index() {
                             <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
                         </div>
                     </div>
-                    <Table setTinchi={setTinchi} setTbtk={setTbtk}/>
+                    <Table setTinchi={setTinchi} setTbtk={setTbtk} />
                     <div className="flex justify-between mt-[30px] ">
                         <div className="flex flex-col gap-[5px]">
                             <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>

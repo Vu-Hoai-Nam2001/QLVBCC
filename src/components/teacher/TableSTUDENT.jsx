@@ -120,8 +120,8 @@ export default function Index({setTinchi,setTbtk}) {
         getCoreRowModel: getCoreRowModel(),
     })
     return (
-        <div className="flex">
-            {data.length > 0 ? <table className="w-[600px]">
+        <div className="flex mt-[30px]">
+            {data.length > 0 ? <table className="w-[630px]">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
@@ -157,7 +157,7 @@ export default function Index({setTinchi,setTbtk}) {
                 </tbody>
             </table> : <></>}
 
-            {data.length > 0 ? <table className="w-[600px] ml-[20px]">
+            {data.length > 0 ? <table className="w-[630px] ml-[20px]">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>

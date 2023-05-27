@@ -24,10 +24,10 @@ const data = {
     SHVB: "123123",
     SVSNCB: "234234",
 }
-export default function Index({masv,setGetdata}) {
+export default function Index({ masv, setGetdata }) {
     const [datasv, setDatasv] = useState([])
 
- //   const { getToken } = useAuth();
+    //   const { getToken } = useAuth();
 
     useEffect(() => {
         fetch(`https://qlvbcc.hasura.app/api/rest/get_ttsv_sohieubang/${masv}`, {
@@ -39,7 +39,7 @@ export default function Index({masv,setGetdata}) {
             .then(response => response.json())
             .then(datasv => {
                 setDatasv(datasv.f_get_ttsv2
-                    )
+                )
             })
             .catch(error => {
                 console.error(error); // Handle any errors
@@ -74,7 +74,7 @@ export default function Index({masv,setGetdata}) {
     return (
         <div>
             {datasv && datasv.map((sinhvien, index) => (
-                <div key={index}>
+                <div key={index} >
                     <div className="flex justify-between mt-[30px]">
                         <div className="flex">
                             <img
@@ -87,12 +87,17 @@ export default function Index({masv,setGetdata}) {
                                 <a className="font-bold underline">TRƯỜNG ĐẠI HỌC QUẢN LÝ VÀ CÔNG NGHỆ HẢI PHÒNG</a>
                             </div>
                         </div>
-                        <div className="flex flex-col justify-center items-center ">
+                        <div className="flex flex-col justify-center items-center  ">
                             <a className="font-bold ">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</a>
                             <a className="font-bold underline">Độc lập - Tự do - Hạnh phúc</a>
+
                         </div>
                     </div>
-                    <div className="flex flex-col justify-center items-center mt-[50px]">
+                    <div  className="flex flex-col mr-[8%]">
+                            <img src="https://res.cloudinary.com/dyfo2gtak/image/upload/v1685158807/pdpvz5m2ysqtz6pwprxz.png" alt="Ảnh" className="h-auto w-[100px] self-end" />
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center mt-[70px]">
                         <h2 className="font-bold text-[30px] ">PHỤ LỤC VĂN BẰNG</h2>
                     </div>
                     <div className="flex  ml-[30px]  w-[100%] mt-[50px] ">

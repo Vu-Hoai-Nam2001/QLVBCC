@@ -4,7 +4,7 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 import { useAuth } from "@clerk/clerk-react";
 
-export default function Index(props) {
+export default function Index({data}) {
     const [datasv, setDatasv] = useState([])
     const [tinchi, setTinchi] = useState(0)
     const [tbtk, setTbtk] = useState(0)
@@ -13,7 +13,7 @@ export default function Index(props) {
         console.log("gọi lại api")
         const callApi = async () => {
 
-            await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH}${props.data}`, {
+            await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH}${data}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,7 +31,8 @@ export default function Index(props) {
                 });
         }
         callApi();
-    }, [props.data]);
+    }, [data]);
+    
     console.log(datasv)
 
     return (
@@ -55,10 +56,13 @@ export default function Index(props) {
                             <a className="font-bold underline">Độc lập - Tự do - Hạnh phúc</a>
                         </div>
                     </div>
+                    {sinhvien.qrcode && <div  className="flex flex-col mr-[8%]">
+                            <img src={sinhvien.qrcode} alt="Ảnh" className="h-auto w-[100px] self-end" />
+                    </div>}
                     <div className="flex flex-col justify-center items-center mt-[50px]">
                         <h2 className="font-bold text-[30px] ">PHỤ LỤC VĂN BẰNG</h2>
                     </div>
-                    <div className="flex  ml-[30px]  w-[100%] mt-[50px] ">
+                    <div className="flex    w-[100%] mt-[60px] ">
                         <div className="flex flex-col w-[50%] gap-[5px]">
                             <a>Họ và tên: {sinhvien.hoten}</a>
 

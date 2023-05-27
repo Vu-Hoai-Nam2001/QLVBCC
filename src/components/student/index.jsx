@@ -1,43 +1,76 @@
-import "../../App.css";
-
-import PLVB from "./PLVS"
+import { useEffect, useState } from "react"
 
 
-// import Table from "./Table"
+export default function index() {
+  const [anh,setAnh] = useState()
+  const [image, setImage] = useState("")
+  const [dataurl, setDataurl] = useState({})
 
-export default function Index() {
- 
+
+  useEffect(() =>{
+    return()=>{
+      anh && URL.revokeObjectURL(anh.preview)
+    }
+  })
+  function handelChange(e) {
+    console.log(e);
+    const file = e;
+    file.preview = URL.createObjectURL(file)
+    setAnh(file)
+    setImage(e)
+  }
+
   
- 
+
+  // const handlePreviewImg = (e) =>{
+  //   const file = e.target.files[0]
+  //   file.preview = URL.createObjectURL(file)
+  //   setAnh(file)
+  // }
   
-  // const {getToken} = useAuth();
-  // useEffect(() => {
-  //   const callApi = async() => {
+  function submitImage() {
+    const data = new FormData()
+    data.append("file", image)
+    data.append("upload_preset", "hoainam")
+    data.append("cloud_name", "dyfo2gtak")
 
-  //     await fetch(`https://qlvbcc.hasura.app/api/rest/get_tensv/1912101003`, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${await getToken({
-  //           template: `hasura-qlvbcc`
-  //         })}`,
-  //       },
-  //       // body:JSON.stringify({masv:'1912101003'})
+    fetch("https://api.cloudinary.com/v1_1/dyfo2gtak/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setDataurl(data)
+        console.log(data);
+      }).catch((err) => {
+        console.log(err);
+      })
 
-  //     })
-  //       .then(response => response.json())
-  //       .then((res) => {
-  //         console.log(res);
-  //       });
-  //   }
-  //   callApi();
-  // }, []);
+    setImage(data)
+  }
+  console.log(dataurl.url)
   return (
-    <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto">
-      <button className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
-       hover:bg-red-600 hover:text-white">IN</button>
-      <PLVB />
-      {/* <Table/> */}
-    </main>
-  );
+    <div className="flex justify-center items-center w-[100%]">
+      <div className="flex flex-col w-[30%] justify-center items-center">
+        
+        <input
+          type="file"
+          onChange={(e) =>{
+            
+            // handlePreviewImg
+            handelChange(e.target.files[0])
+          }}
+          className=""
+        />
+        {anh && <img src={anh.preview} alt="" className="w-[355px]" />}
+        <button
+          className="bg-[#777777]"
+          onClick={() => submitImage()}
+        >
+          Upload
+        </button>
+
+      </div>
+    </div>
+  )
 }
