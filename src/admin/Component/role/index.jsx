@@ -90,7 +90,7 @@ export default function Index() {
     <main className=" flex-1 pt-[100px] pl-[90px]">
       {magv !== undefined ? <><div className="flex justify-end">
         <div className="relative w-[24%] ">
-          <input value={usercode} onChange={e => setusercode(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Nhập msv hoặc số cmt" />
+          <input value={usercode} onChange={e => setusercode(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Nhập mã giáo viên" />
           <span className="absolute inset-y-0 right-0 flex items-center pr-2">
             <BsSearch />
           </span>

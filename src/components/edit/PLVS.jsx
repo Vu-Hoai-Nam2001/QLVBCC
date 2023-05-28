@@ -2,17 +2,36 @@ import "../../App.css";
 import { useEffect, useState } from "react"
 import { useAuth } from "@clerk/clerk-react";
 import swal from 'sweetalert';
+import ImdEdit from "./img.jsx"
 
 export default function Index(props) {
     //update tên đề tài 
-    const [datasv, setDatasv] = useState([])
+    const [datasv, setDatasv] = useState()
     const { getToken } = useAuth();
     const [tendetai, setTendetai] = useState('')
     //update ảnh
-    const [anh, setAnh] = useState()
-    const [image, setImage] = useState("")
-    const [dataurl, setDataurl] = useState({})
+   
     const [dataanh, setataanh] = useState("")
+    const handleClick = async () => {
+
+        await fetch(`https://qlvbcc.hasura.app/api/rest/update_tendetai`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c',
+            },
+            body: JSON.stringify({
+                masinhvien: `${props.data}`,
+                tendetai: `${tendetai}`,
+            })
+
+        })
+            .then(response => response.json())
+
+    }
+    
+    
+    
 
     useEffect(() => {
         console.log("gọi lại api")
@@ -34,90 +53,21 @@ export default function Index(props) {
                     setTendetai(datasv.f_get_ttsv5[0].tendetai)
                     setataanh(datasv.f_get_ttsv5[0].qrcode)
                     setDatasv(datasv.f_get_ttsv5)
+                    
 
                 });
         }
         callApi();
     }, [props.data]);
     console.log(datasv)
-    // setTendetai(datasv.tendetai)
-    // useEffect(()=>{
-    //     datasv && setTendetai(datasv[0].tendetai)
-    // },[datasv])
+    console.log(dataanh);
 
 
 
-    const handleClick = async () => {
-
-        await fetch(`https://qlvbcc.hasura.app/api/rest/update_tendetai`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c',
-            },
-            body: JSON.stringify({
-                masinhvien: `${props.data}`,
-                tendetai: `${tendetai}`,
-                qrcode: `${dataurl.url}`
-            })
-
-        })
-            .then(response => response.json())
-
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////
-
-    //updete ảnh 
-   
-
-
-    useEffect(() => {
-        return () => {
-            anh && URL.revokeObjectURL(anh.preview)
-        }
-    })
-    function handelChange(e) {
-        console.log(e);
-        const file = e;
-        file.preview = URL.createObjectURL(file)
-        setAnh(file)
-        setImage(e)
-    }
-
-
-
-    // const handlePreviewImg = (e) =>{
-    //   const file = e.target.files[0]
-    //   file.preview = URL.createObjectURL(file)
-    //   setAnh(file)
-    // }
-
-    async  function submitImage() {
-        const data = new FormData()
-        data.append("file", image)
-        data.append("upload_preset", "hoainam")
-        data.append("cloud_name", "dyfo2gtak")
-
-        await  fetch("https://api.cloudinary.com/v1_1/dyfo2gtak/image/upload", {
-            method: "post",
-            body: data
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setDataurl(data)
-                console.log(data);
-            }).catch((err) => {
-                console.log(err);
-            })
-
-        setImage(data)
-    }
-    console.log(dataurl.url)
     return (
-        <div>
+        <div >
             {datasv && datasv.map((sinhvien, index) => (
-                <div key={index}>
+                <div key={index} >
                     <div className="flex    w-[100%] mt-[50px] ">
                         <div className="flex flex-col w-[50%] gap-[5px]">
                             <a>Họ và tên: {sinhvien.hoten}</a>
@@ -128,27 +78,7 @@ export default function Index(props) {
                             <a>Khóa: {sinhvien.tenkhoahoc}</a>
                         </div>
                     </div>
-                    <div className="flex flex-col w-[30%] justify-center items-center">
-
-                        <input
-                            type="file"
-                            onChange={(e) => {
-
-                                // handlePreviewImg
-                                handelChange(e.target.files[0])
-                            }}
-                            className=""
-                        />
-                        {anh===undefined&& dataanh && <img src={dataanh}/>}
-                        {anh && <img src={anh.preview} alt="" className="w-[355px]" />}
-                        <button
-                            className="bg-[#777777]"
-                            onClick={() => submitImage()}
-                        >
-                            Upload
-                        </button>
-
-                    </div>
+                   
                     <div className="flex  ">
                         <div className="flex flex-col gap-[5px]">
                             <a >Tên đề tài tốt nghiệp:</a>
@@ -168,27 +98,33 @@ export default function Index(props) {
 
                     </div>
                     <button
-                        onClick={ () => {
+                        onClick={() => {
                             swal("Bạn có chắc chắn muốn sửa ?", {
                                 buttons: ["Hủy!", true],
                             }).then((value) => {
                                 if (value === true) {
-                                    
-                                    submitImage();
 
-                                      handleClick();
-                                    swal("Cập nhật thành công!", "Nhấn OK để thoát!", "success").then(() => {
-                                        window.location.href = "/teacher";
+                                   
+                                    
+                                    handleClick()
+                                    swal("Cập nhật Tên đề tài thành công!", "Nhấn OK để tiếp tục!", "success").then(() => {
+                                        // window.location.href = "/edit";
+                                        // handleClick();
+                                        // swal("Lưu thành công!", "Nhấn OK để thoát!", "success").then(() => {
+
+                                        //     window.location.href = "/edit";
+                                        // });
                                     });
                                 }
                             });
                         }}
-                        className="mt-[5px]  w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black hover:bg-red-600 hover:text-white">
-                        Lưu Sửa
+                        className="mt-[5px]  w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black hover:bg-red-600 hover:text-white">
+                        Lưu Sửa Tên Đề Tài
                     </button>
                 </div>
             ))}
-
+            {datasv && <ImdEdit  datasv={datasv}/>}
+            
         </div>
     )
 }
