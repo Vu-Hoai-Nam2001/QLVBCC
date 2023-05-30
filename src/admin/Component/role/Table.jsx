@@ -154,7 +154,7 @@ export default function Index({ datauser, role}) {
                     })}
                 </tbody>
             </table> : <></>}
-            {role===2 && datauser && datauser.map((user, index) => (
+            {role===4 && datauser && datauser.map((user, index) => (
                 <div key={index}>
 
                     <div className="   w-[100%] mt-[50px] ">
@@ -197,8 +197,6 @@ export default function Index({ datauser, role}) {
 
                 </div>
             ))}
-
-
 
         </div>
 

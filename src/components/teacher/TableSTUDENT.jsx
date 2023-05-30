@@ -67,7 +67,7 @@ const columns = [
     }),
 
 ]
-export default function Index({setTinchi,setTbtk}) {
+export default function Index({setTinchi}) {
     const { user } = useClerk();
     const [data, setData] = useState([])
     const { getToken } = useAuth();
@@ -98,9 +98,7 @@ export default function Index({setTinchi,setTbtk}) {
     useEffect(() => {
         if(data.length > 0){
             setTinchi(data.reduce((total, current) => total + current.khoiluong, 0))
-            const a=data.reduce((total, current) => total + current.diemthang4, 0)/data.length
-            const b = a.toFixed(2)
-            setTbtk(b)
+            
         }
     },[data])
     // const totaltinchi = data.reduce((total, current) => total + current.khoiluong, 0);
@@ -120,8 +118,8 @@ export default function Index({setTinchi,setTbtk}) {
         getCoreRowModel: getCoreRowModel(),
     })
     return (
-        <div className="flex mt-[30px]">
-            {data.length > 0 ? <table className="w-[630px]">
+        <div className="flex mt-[30px] ">
+            {data.length > 0 ? <table className="w-[1000px]">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
@@ -140,7 +138,7 @@ export default function Index({setTinchi,setTbtk}) {
                 </thead>
                 <tbody>
                     {table.getRowModel().rows.map(row => {
-                        if (row.id <= 24) {
+                        
                             return (
                                 <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
                                     {row.getVisibleCells().map(cell => (
@@ -150,48 +148,12 @@ export default function Index({setTinchi,setTbtk}) {
                                     ))}
                                 </tr>
                             );
-                        } else {
-                            return null; // Bỏ qua các dòng với row.id > 25
-                        }
+                        
                     })}
                 </tbody>
             </table> : <></>}
 
-            {data.length > 0 ? <table className="w-[630px] ml-[20px]">
-                <thead>
-                    {table.getHeaderGroups().map(headerGroup => (
-                        <tr className="border-solid border-[1px] border-x-black border-y-black" key={headerGroup.id}>
-                            {headerGroup.headers.map(header => (
-                                <th className="pl-[10px] text-center" key={header.id}>
-                                    {header.isPlaceholder
-                                        ? null
-                                        : flexRender(
-                                            header.column.columnDef.header,
-                                            header.getContext()
-                                        )}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody>
-                    {table.getRowModel().rows.map(row => {
-                        if (row.id > 24) {
-                            return (
-                                <tr className="border-solid border-[1px] border-x-black border-y-black" key={row.id}>
-                                    {row.getVisibleCells().map(cell => (
-                                        <td className="pl-[10px] text-center" key={cell.id}>
-                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                        </td>
-                                    ))}
-                                </tr>
-                            );
-                        } else {
-                            return null; // Bỏ qua các dòng với row.id > 25
-                        }
-                    })}
-                </tbody>
-            </table> : <></>}
+            
 
         </div>
     )

@@ -4,28 +4,29 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 //import { useAuth } from "@clerk/clerk-react";
 
-const data = {
-    "name": "Hoài Nam",
-    sex: "Nam",
-    MSV: "191201003",
-    SoCCCD: "1029831",
-    Hinhthucdaotao: "Chính Quy",
-    TRinhDoDT: "THPT",
-    ngonngu: "Tiếng việt",
-    ngaysinh: "26/01/2001",
-    khoa: "k21",
-    chuyennganh: "CNTT",
-    ngaynhaphoc: "1/1/2019",
-    thoigiandaotao: "4 năm",
-    tendetaitotnghiep: "làm web",
-    DTBTK: "3",
-    TSTC: "118",
-    XHTN: "Khá",
-    SHVB: "123123",
-    SVSNCB: "234234",
-}
+// const data = {
+//     "name": "Hoài Nam",
+//     sex: "Nam",
+//     MSV: "191201003",
+//     SoCCCD: "1029831",
+//     Hinhthucdaotao: "Chính Quy",
+//     TRinhDoDT: "THPT",
+//     ngonngu: "Tiếng việt",
+//     ngaysinh: "26/01/2001",
+//     khoa: "k21",
+//     chuyennganh: "CNTT",
+//     ngaynhaphoc: "1/1/2019",
+//     thoigiandaotao: "4 năm",
+//     tendetaitotnghiep: "làm web",
+//     DTBTK: "3",
+//     TSTC: "118",
+//     XHTN: "Khá",
+//     SHVB: "123123",
+//     SVSNCB: "234234",
+// }
 export default function Index({ masv, setGetdata }) {
     const [datasv, setDatasv] = useState([])
+    const [tinchi, setTinchi] = useState(0)
 
     //   const { getToken } = useAuth();
 
@@ -93,14 +94,14 @@ export default function Index({ masv, setGetdata }) {
 
                         </div>
                     </div>
-                    <div  className="flex flex-col mr-[8%]">
-                            <img src="https://res.cloudinary.com/dyfo2gtak/image/upload/v1685158807/pdpvz5m2ysqtz6pwprxz.png" alt="Ảnh" className="h-auto w-[100px] self-end" />
-                    </div>
-
+                    {sinhvien.qrcode && <div  className="flex flex-col mr-[8%]">
+                            <img src={sinhvien.qrcode} alt="Ảnh" className="h-auto w-[100px] self-end" />
+                    </div>}
+                    <div></div>
                     <div className="flex flex-col justify-center items-center mt-[70px]">
                         <h2 className="font-bold text-[30px] ">PHỤ LỤC VĂN BẰNG</h2>
                     </div>
-                    <div className="flex  ml-[30px]  w-[100%] mt-[50px] ">
+                    <div className="flex  ml-[2%]  w-[100%] mt-[50px] ">
                         <div className="flex flex-col w-[50%] gap-[5px]">
                             <a>Họ và tên: {sinhvien.hoten}</a>
 
@@ -115,11 +116,11 @@ export default function Index({ masv, setGetdata }) {
                             <a>Trình độ đào tạo: ..........</a>
                         </div>
                         <div className="flex flex-col w-[50%] gap-[5px]">
-                            <a>Ngôn ngữ đào tạo: ...................</a>
+                            <a>Ngôn ngữ đào tạo: Tiếng việt</a>
 
                             <a>Ngày sinh: {sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</a>
 
-                            <a>Khóa: {sinhvien.tenkhoahoc}</a>
+                            <a>{sinhvien.tenkhoahoc}</a>
 
                             <a>Chuyên ngành: {sinhvien.tennganh}</a>
 
@@ -128,14 +129,14 @@ export default function Index({ masv, setGetdata }) {
                             <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
                         </div>
                     </div>
-                    <Table data={sinhvien.masinhvien} />
-                    <div className="flex justify-between mt-[30px] ">
+                    <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi} />
+                    <div className="flex justify-between mt-[30px] ml-[2%] ">
                         <div className="flex flex-col gap-[5px]">
-                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{data.tendetaitotnghiep}</span></a>
+                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>
 
-                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {data.DTBTK}</span></a>
+                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {sinhvien.diem4}</span></a>
 
-                            <a >Tổng số tín chỉ: <span className="font-bold">{data.TSTC}</span></a>
+                            <a >Tổng số tín chỉ: <span className="font-bold">{tinchi}</span></a>
 
                             <a >Xếp hạng tốt nghiệp: <span className="font-bold">{sinhvien.xeploaitotnghiep}</span> </a>
 

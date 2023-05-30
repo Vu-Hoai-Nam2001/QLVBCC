@@ -4,6 +4,7 @@ import PLVB from "./PLVS"
 import PLVBST from "./PLVSSTUDENT"
 import { useState, useEffect } from "react"
 import { useClerk } from "@clerk/clerk-react";
+import Print from "./../print"
 // import Table from "./Table"
 
 export default function Index() {
@@ -11,8 +12,9 @@ export default function Index() {
   const [masv, setMasv] = useState('');
   const [masv2, setMasv2] = useState('');
   const [role, setRole] = useState('3');
-
+  const [showprint, setShowprint] = useState(false);
   
+
 
   // const {getToken} = useAuth();
   // useEffect(() => {
@@ -61,7 +63,7 @@ export default function Index() {
     }
     callApi();
   }, [user.publicMetadata.magv]);
-console.log(role)
+  console.log(role)
   return (
     <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px]">
       {magv !== undefined ? <><div className="flex justify-end">
@@ -74,6 +76,7 @@ console.log(role)
         <button onClick={() => {
           if (masv !== '') {
             setShow(true)
+            setShowprint(false)
             setMasv2(masv)
           }
           else setShow(false)
@@ -82,14 +85,38 @@ console.log(role)
         }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] 
       border border-black hover:bg-red-600 hover:text-white ">TÌm kiếm</button>
       </div>
-        {role === 2 ? <> <button onClick={() => { window.location.href = "/edit"; }} className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
-       hover:bg-red-600 hover:text-white">Sửa</button></> : <></>}
+        {role === 2 || role === 4 ? <>
+          <button
+            onClick={() => { window.location.href = "/edit"; }} className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
+       hover:bg-red-600 hover:text-white">
+            Sửa
+          </button>
+          <button
+            onClick={() => {
+              if (masv !== '') {
+                setShowprint(true)
+                setShow(false)
+              }
+              else setShowprint(false)
+            }}
+            
+            className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
+       hover:bg-red-600 hover:text-white">
+            In
+          </button>
 
-        
+
+        </> : <></>}
+
+
 
         {show && <PLVB data={masv2} />}
         {/* <Table/> */}
-        
+        {
+          showprint && < Print data={masv2}/>
+        }
+      
+
       </> : <>
         <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px]">
           <PLVBST />

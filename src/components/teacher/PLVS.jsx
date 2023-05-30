@@ -4,10 +4,10 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 import { useAuth } from "@clerk/clerk-react";
 
-export default function Index({data}) {
+export default function Index({ data }) {
     const [datasv, setDatasv] = useState([])
     const [tinchi, setTinchi] = useState(0)
-    const [tbtk, setTbtk] = useState(0)
+    
     const { getToken } = useAuth();
     useEffect(() => {
         console.log("gọi lại api")
@@ -32,7 +32,7 @@ export default function Index({data}) {
         }
         callApi();
     }, [data]);
-    
+
     console.log(datasv)
 
     return (
@@ -56,60 +56,62 @@ export default function Index({data}) {
                             <a className="font-bold underline">Độc lập - Tự do - Hạnh phúc</a>
                         </div>
                     </div>
-                    {sinhvien.qrcode && <div  className="flex flex-col mr-[8%]">
-                            <img src={sinhvien.qrcode} alt="Ảnh" className="h-auto w-[100px] self-end" />
+                    {sinhvien.qrcode && <div className="flex flex-col mr-[8%]">
+                        <img src={sinhvien.qrcode} alt="Ảnh" className="h-auto w-[100px] self-end" />
                     </div>}
                     <div className="flex flex-col justify-center items-center mt-[50px]">
                         <h2 className="font-bold text-[30px] ">PHỤ LỤC VĂN BẰNG</h2>
                     </div>
-                    <div className="flex    w-[100%] mt-[60px] ">
-                        <div className="flex flex-col w-[50%] gap-[5px]">
-                            <a>Họ và tên: {sinhvien.hoten}</a>
+                    <div className="ml-[3%]">
+                        <div className="flex    w-[100%] mt-[60px] ">
+                            <div className="flex flex-col w-[50%] gap-[5px]">
+                                <a>Họ và tên: {sinhvien.hoten}</a>
 
-                            <a>Giới tính: {sinhvien.goitinh}</a>
+                                <a>Giới tính: {sinhvien.goitinh}</a>
 
-                            <a>Mã sinh viên: {sinhvien.masinhvien}</a>
+                                <a>Mã sinh viên: {sinhvien.masinhvien}</a>
 
-                            <a>Số CCCD: {sinhvien.socmnd}</a>
+                                <a>Số CCCD: {sinhvien.socmnd}</a>
 
-                            <a>Hình thức đào tạo: {sinhvien.hedaotao}</a>
+                                <a>Hình thức đào tạo: {sinhvien.hedaotao}</a>
 
-                            <a>Trình độ đào tạo: ..........</a>
+                                <a>Trình độ đào tạo: ..........</a>
+                            </div>
+                            <div className="flex flex-col w-[50%] gap-[5px]">
+                                <a>Ngôn ngữ đào tạo: Tiếng việt</a>
+
+                                <a>Ngày sinh: {sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</a>
+
+                                <a> {sinhvien.tenkhoahoc}</a>
+
+                                <a>Chuyên ngành: {sinhvien.tennganh}</a>
+
+                                <a>Ngày nhập học: {sinhvien.ngayvaotruong}</a>
+
+                                <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
+                            </div>
                         </div>
-                        <div className="flex flex-col w-[50%] gap-[5px]">
-                            <a>Ngôn ngữ đào tạo: ...................</a>
+                        <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi}  />
+                        <div className="flex justify-between mt-[30px] ">
+                            <div className="flex flex-col gap-[5px]">
+                                <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>
 
-                            <a>Ngày sinh: {sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</a>
+                                <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {sinhvien.diem4}</span></a>
 
-                            <a>Khóa: {sinhvien.tenkhoahoc}</a>
+                                <a >Tổng số tín chỉ: <span className="font-bold">{tinchi}</span></a>
 
-                            <a>Chuyên ngành: {sinhvien.tennganh}</a>
+                                <a >Xếp hạng tốt nghiệp: <span className="font-bold">{sinhvien.xeploaitotnghiep}</span> </a>
 
-                            <a>Ngày nhập học: {sinhvien.ngayvaotruong}</a>
+                                <a>Số hiệu văn bằng: <span className="font-bold">{sinhvien.sohieubang}</span> </a>
 
-                            <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
-                        </div>
-                    </div>
-                    <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi} setTbtk={setTbtk} />
-                    <div className="flex justify-between mt-[30px] ">
-                        <div className="flex flex-col gap-[5px]">
-                            <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>
+                                <a >Số vào sổ ngày cấp văn bằng: <span className="font-bold">{sinhvien.sovaoso}</span> </a>
+                            </div>
 
-                            <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-bold"> {tbtk}</span></a>
-
-                            <a >Tổng số tín chỉ: <span className="font-bold">{tinchi}</span></a>
-
-                            <a >Xếp hạng tốt nghiệp: <span className="font-bold">{sinhvien.xeploaitotnghiep}</span> </a>
-
-                            <a>Số hiệu văn bằng: <span className="font-bold">{sinhvien.sohieubang}</span> </a>
-
-                            <a >Số vào sổ ngày cấp văn bằng: <span className="font-bold">{sinhvien.sovaoso}</span> </a>
-                        </div>
-
-                        <div className="flex flex-col justify-center  items-center">
-                            <a className="">Hải Phòng,ngày....tháng....năm....</a>
-                            <a className="">TL, HIỆU TRƯỞNG</a>
-                            <a>TRƯỞNG PHÒNG ĐÀO TẠO - QLKH</a>
+                            <div className="flex flex-col justify-center  items-center">
+                                <a className="">Hải Phòng,ngày....tháng....năm....</a>
+                                <a className="">TL, HIỆU TRƯỞNG</a>
+                                <a>TRƯỞNG PHÒNG ĐÀO TẠO - QLKH</a>
+                            </div>
                         </div>
                     </div>
                 </div>

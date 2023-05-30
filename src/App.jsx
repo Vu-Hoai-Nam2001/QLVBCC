@@ -10,6 +10,7 @@ const Home = lazy(() => import("./components/home"));
 const Teacher = lazy(() => import("./components/teacher"));
 const Student = lazy(() => import("./components/student"));
 const Edit = lazy(() => import("./components/edit"));
+const Print = lazy(() => import("./components/print"));
 
 // ADMIN IMPORT
 import HeaderAdmin from "./admin/hardComponent/header";
@@ -18,6 +19,7 @@ import SideBar from "./admin/hardComponent/sideBar";
 const Role = lazy(() => import("./admin/Component/role"));
 
 const Test = lazy(() => import("./admin/Component/test"));
+
 
 function HardAdmin() {
   return (
@@ -78,6 +80,13 @@ function App() {
           <Route path="/student" element={
             <>
             <Student />
+              {/* <SignedIn><Student /></SignedIn>
+              <SignedOut><RedirectToSignIn /></SignedOut> */}
+            </>
+          } />
+          <Route path="/print" element={
+            <>
+            <Print />
               {/* <SignedIn><Student /></SignedIn>
               <SignedOut><RedirectToSignIn /></SignedOut> */}
             </>
