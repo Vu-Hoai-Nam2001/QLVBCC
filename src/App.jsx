@@ -11,6 +11,8 @@ const Teacher = lazy(() => import("./components/teacher"));
 const Student = lazy(() => import("./components/student"));
 const Edit = lazy(() => import("./components/edit"));
 const Print = lazy(() => import("./components/print"));
+import ResetPass from "./hardComponents/resetPass";
+import ReactLoading from "react-loading";
 
 // ADMIN IMPORT
 import HeaderAdmin from "./admin/hardComponent/header";
@@ -62,13 +64,39 @@ function Hard() {
 function App() {
   return (
     // <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLIC_KEY}>
-      <ClerkProvider publishableKey='pk_test_ZnVsbC1nYXJmaXNoLTExLmNsZXJrLmFjY291bnRzLmRldiQ'>
+    <ClerkProvider publishableKey='pk_test_ZnVsbC1nYXJmaXNoLTExLmNsZXJrLmFjY291bnRzLmRldiQ'>
 
       <Routes>
         <Route path="/signin" element={<>
           <SignedIn><Navigate to={'/teacher'} replace /></SignedIn>
           <SignedOut><SignIn /></SignedOut>
         </>} />
+        <Route
+            path="/reset-password"
+            element={
+              <>
+                <SignedIn>
+                  <Suspense
+                    fallback={
+                      <div className="loading">
+                        <ReactLoading
+                          type="spin"
+                          color="#0083C2"
+                          width={"50px"}
+                          height={"50px"}
+                        />
+                      </div>
+                    }
+                  >
+                    <ResetPass />
+                  </Suspense>
+                </SignedIn>
+                <SignedOut>
+                  <Navigate to="/signin" />
+                </SignedOut>
+              </>
+            }
+          />
         <Route path="/" element={<Hard />}>
           <Route path="/" element={<Navigate to={"/home"} />} />
           <Route path="/home" element={<Home />} />
@@ -80,14 +108,14 @@ function App() {
           } />
           <Route path="/student" element={
             <>
-            <Student />
+              <Student />
               {/* <SignedIn><Student /></SignedIn>
               <SignedOut><RedirectToSignIn /></SignedOut> */}
             </>
           } />
           <Route path="/print" element={
             <>
-            <Print />
+              <Print />
               {/* <SignedIn><Student /></SignedIn>
               <SignedOut><RedirectToSignIn /></SignedOut> */}
             </>
@@ -96,6 +124,8 @@ function App() {
             <SignedIn><Edit /></SignedIn>
             <SignedOut><Navigate to={'/home'} replace /></SignedOut>
           </>} />
+          
+
         </Route>
         <Route path="/signinadmin" element={<>
           <SignedIn><Navigate to={'/admin'} replace /></SignedIn>

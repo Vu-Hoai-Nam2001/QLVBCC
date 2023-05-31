@@ -40,7 +40,7 @@ export default function Index() {
 
   console.log(user.publicMetadata.magv)
   return (
-    <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px]">
+    <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px] min-h-[420px]">
       {magv !== undefined ? <><div className="flex justify-end">
         <div className="relative w-[20%] ">
           <input value={masv} onChange={e => setMasv(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Nhập msv hoặc số cmt" />
@@ -56,7 +56,7 @@ export default function Index() {
           else setShow(false)
 
 
-        }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] 
+        }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
       border border-black hover:bg-red-600 hover:text-white ">TÌm kiếm</button>
       </div>
         

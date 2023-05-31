@@ -5,6 +5,7 @@ import { useState} from "react"
 import {  useClerk } from "@clerk/clerk-react";
 
 
+
 export default function Index() {
   const {user} = useClerk();
   console.log(user)
@@ -28,7 +29,7 @@ export default function Index() {
           else setShow(false)
           
           
-        }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] 
+        }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
       border border-black hover:bg-red-600 hover:text-white ">TÌm kiếm</button>
       </div>
       {/* <button onClick={()=>{window.location.href = "/edit";}} className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black

@@ -49,7 +49,7 @@
             "Name": "DataSource1",
             "ConnectionProperties": {
                 "DataProvider": "JSONEMBED",
-                "ConnectString": "jsondata={\\n    \"masinhvien\": \"example\",\\n    \"hoten\": \"example\",\\n    \"nganysinh\": \"example\",\\n    \"socmnd\": \"example\",\\n    \"goitinh\": \"example\",\\n    \"tennganh\": \"example\",\\n    \"ngayvaotruong\": null,\\n    \"hedaotao\": \"example\",\\n    \"tenkhoahoc\": \"example\",\\n    \"sohieubang\": null,\\n    \"sovaoso\": null,\\n    \"xeploaitotnghiep\": \"example\",\\n    \"thoigiandaotao\": \"example\",\\n    \"tendetai\": \"example\",\\n\"qrcode\":\"example\"\\n}"
+                "ConnectString": "jsondata={\\n    \"masinhvien\": \"example\",\\n    \"hoten\": \"example\",\\n    \"nganysinh\": \"example\",\\n    \"socmnd\": \"example\",\\n    \"goitinh\": \"example\",\\n    \"tennganh\": \"example\",\\n    \"ngayvaotruong\": null,\\n    \"hedaotao\": \"example\",\\n    \"tenkhoahoc\": \"example\",\\n    \"sohieubang\": null,\\n    \"sovaoso\": null,\\n    \"xeploaitotnghiep\": \"example\",\\n    \"thoigiandaotao\": \"example\",\\n    \"tendetai\": \"example\",\\n\"qrcode\":\"example\",\\n\"diem4\":\"example\"\\n}"
             }
         }
     ],
@@ -352,6 +352,26 @@
                         "Left": "9.534cm",
                         "Top": "5.885cm",
                         "Width": "2.241cm",
+                        "Height": "0.75cm"
+                    },
+                    {
+                        "Type": "textbox",
+                        "Name": "TextBox15",
+                        "ZIndex": 16,
+                        "DataElementName": "TextBox1",
+                        "CanGrow": true,
+                        "KeepTogether": true,
+                        "Value": "Khóa          :",
+                        "Style": {
+                            "FontFamily": "Montserrat",
+                            "PaddingLeft": "2pt",
+                            "PaddingRight": "2pt",
+                            "PaddingTop": "2pt",
+                            "PaddingBottom": "2pt"
+                        },
+                        "Left": "9.527cm",
+                        "Top": "6.665cm",
+                        "Width": "2.076cm",
                         "Height": "0.75cm"
                     },
                     {
@@ -1301,8 +1321,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "1.4655in",
-                        "Top": "2.6033in",
+                        "Left": "1.5112in",
+                        "Top": "2.5805in",
                         "Width": "1.9578in",
                         "Height": "0.25in"
                     },
@@ -1320,8 +1340,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "1.4821in",
-                        "Top": "2.0173in",
+                        "Left": "1.4486in",
+                        "Top": "2.0201in",
                         "Width": "2.0222in",
                         "Height": "0.25in"
                     },
@@ -1339,8 +1359,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "1.4744in",
-                        "Top": "2.3016in",
+                        "Left": "1.3819in",
+                        "Top": "2.3236in",
                         "Width": "1.5958in",
                         "Height": "0.25in"
                     },
@@ -1358,8 +1378,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "1.4618in",
-                        "Top": "2.9021in",
+                        "Left": "1.502in",
+                        "Top": "2.9131in",
                         "Width": "2.0222in",
                         "Height": "0.25in"
                     },
@@ -1415,8 +1435,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "3.7565in",
-                        "Top": "2.6595in",
+                        "Left": "4.253in",
+                        "Top": "2.6359in",
                         "Width": "1.5771in",
                         "Height": "0.25in"
                     },
@@ -1434,8 +1454,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "5.0791in",
-                        "Top": "3.2327in",
+                        "Left": "4.9291in",
+                        "Top": "3.25in",
                         "Width": "2.2493in",
                         "Height": "0.25in"
                     },
@@ -1453,8 +1473,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "5.0812in",
-                        "Top": "2.9354in",
+                        "Left": "4.891in",
+                        "Top": "2.9472in",
                         "Width": "2.2688in",
                         "Height": "0.25in"
                     },
@@ -1472,8 +1492,8 @@
                             "PaddingTop": "2pt",
                             "PaddingBottom": "2pt"
                         },
-                        "Left": "5.0782in",
-                        "Top": "3.5217in",
+                        "Left": "5.0617in",
+                        "Top": "3.5162in",
                         "Width": "2.1451in",
                         "Height": "0.25in"
                     },
@@ -1615,6 +1635,26 @@
                         "Top": "1.986cm",
                         "Width": "3.641cm",
                         "Height": "2.071cm"
+                    },
+                    {
+                        "Type": "textbox",
+                        "Name": "TextBox31",
+                        "ZIndex": 66,
+                        "DataElementName": "TextBox1",
+                        "CanGrow": true,
+                        "KeepTogether": true,
+                        "Value": "=First(Fields!diem4.Value, \"DataSet1\")",
+                        "Style": {
+                            "FontFamily": "Montserrat",
+                            "PaddingLeft": "2pt",
+                            "PaddingRight": "2pt",
+                            "PaddingTop": "2pt",
+                            "PaddingBottom": "2pt"
+                        },
+                        "Left": "5.117cm",
+                        "Top": "14.03cm",
+                        "Width": "3.475cm",
+                        "Height": "0.75cm"
                     }
                 ],
                 "Style": {
@@ -1768,6 +1808,10 @@
                 {
                     "Name": "qrcode",
                     "DataField": "qrcode"
+                },
+                {
+                    "Name": "diem4",
+                    "DataField": "diem4"
                 }
             ],
             "Query": {

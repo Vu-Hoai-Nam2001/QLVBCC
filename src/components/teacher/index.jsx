@@ -6,6 +6,8 @@ import { useState, useEffect } from "react"
 import { useClerk } from "@clerk/clerk-react";
 import Print from "./../print"
 // import Table from "./Table"
+import { AiFillPrinter } from "react-icons/ai"
+import{BiEditAlt} from "react-icons/bi"
 
 export default function Index() {
   const [show, setShow] = useState(false);
@@ -13,7 +15,8 @@ export default function Index() {
   const [masv2, setMasv2] = useState('');
   const [role, setRole] = useState('3');
   const [showprint, setShowprint] = useState(false);
-  
+  const [datamasv, setDataMasv] = useState('');
+
 
 
   // const {getToken} = useAuth();
@@ -65,7 +68,7 @@ export default function Index() {
   }, [user.publicMetadata.magv]);
   console.log(role)
   return (
-    <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px]">
+    <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px] min-h-[420px]">
       {magv !== undefined ? <><div className="flex justify-end">
         <div className="relative w-[20%] ">
           <input value={masv} onChange={e => setMasv(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Nhập msv hoặc số cmt" />
@@ -82,40 +85,41 @@ export default function Index() {
           else setShow(false)
 
 
-        }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] 
+        }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] text-white 
       border border-black hover:bg-red-600 hover:text-white ">TÌm kiếm</button>
       </div>
         {role === 2 || role === 4 ? <>
-          <button
-            onClick={() => { window.location.href = "/edit"; }} className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
-       hover:bg-red-600 hover:text-white">
-            Sửa
-          </button>
-          <button
-            onClick={() => {
-              if (masv !== '') {
-                setShowprint(true)
-                setShow(false)
-              }
-              else setShowprint(false)
-            }}
-            
-            className="ml-auto mt-[5px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black
-       hover:bg-red-600 hover:text-white">
-            In
-          </button>
+          <div className="flex ml-auto">
+            <button
+              onClick={() => { window.location.href = "/edit"; }} className="ml-auto mt-[5px] w-[55px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black text-white 
+       hover:bg-red-600 hover:text-white flex  items-center justify-center">
+              <BiEditAlt className="text-[25px]"/>
+            </button>
+            <button
+              onClick={() => {
+                if (masv !== '') {
+                  setShowprint(true)
+                  setShow(false)
+                }
+                else setShowprint(false)
+              }}
 
+              className="ml-[10px] mt-[5px] w-[55px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black text-white 
+       hover:bg-red-600 hover:text-white flex  items-center justify-center ">
+              <AiFillPrinter className="text-[25px] " />
+            </button>
 
+          </div>
         </> : <></>}
 
 
 
-        {show && <PLVB data={masv2} />}
+        {show && <PLVB data={masv2} setDataMasv={setDataMasv} />}
         {/* <Table/> */}
         {
-          showprint && < Print data={masv2}/>
+          showprint && < Print data={datamasv} />
         }
-      
+
 
       </> : <>
         <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px]">

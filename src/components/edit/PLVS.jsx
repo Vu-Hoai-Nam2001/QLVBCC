@@ -70,12 +70,14 @@ export default function Index(props) {
                 <div key={index} >
                     <div className="flex    w-[100%] mt-[50px] ">
                         <div className="flex flex-col w-[50%] gap-[5px]">
-                            <a>Họ và tên: {sinhvien.hoten}</a>
-                            <a>Ngày sinh: {sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</a>
-                            <a>Giới tính: {sinhvien.goitinh}</a>
-                            <a>Mã sinh viên: {sinhvien.masinhvien}</a>
-                            <a>Số CCCD: {sinhvien.socmnd}</a>
-                            <a>Khóa: {sinhvien.tenkhoahoc}</a>
+                            <a>Họ và tên: <span className="font-bold">{sinhvien.hoten}</span></a>
+                            <a>Mã sinh viên:<span className="font-bold">{sinhvien.masinhvien}</span> </a>
+                            <a>Số CCCD: <span className="font-bold">{sinhvien.socmnd}</span></a>
+                            
+                            <a>Ngày sinh: <span className="font-bold">{sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
+                            <a>Giới tính: <span className="font-bold">{sinhvien.goitinh}</span> </a>
+                            <a>Ngành: <span className="font-bold">{sinhvien.tennganh} </span></a>
+                            <a > {sinhvien.tenkhoahoc}</a>
                         </div>
                     </div>
                    

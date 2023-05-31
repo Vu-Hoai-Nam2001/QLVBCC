@@ -4,10 +4,10 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 import { useAuth } from "@clerk/clerk-react";
 
-export default function Index({ data }) {
+export default function Index({ data, setDataMasv }) {
     const [datasv, setDatasv] = useState([])
     const [tinchi, setTinchi] = useState(0)
-    
+
     const { getToken } = useAuth();
     useEffect(() => {
         console.log("gọi lại api")
@@ -27,6 +27,7 @@ export default function Index({ data }) {
                 .then(response => response.json())
                 .then(datasv => {
                     setDatasv(datasv.f_get_ttsv5)
+                    setDataMasv(datasv.f_get_ttsv5[0].masinhvien)
 
                 });
         }
@@ -34,6 +35,8 @@ export default function Index({ data }) {
     }, [data]);
 
     console.log(datasv)
+
+
 
     return (
         <div>
@@ -63,35 +66,35 @@ export default function Index({ data }) {
                         <h2 className="font-bold text-[30px] ">PHỤ LỤC VĂN BẰNG</h2>
                     </div>
                     <div className="ml-[3%]">
-                        <div className="flex    w-[100%] mt-[60px] ">
+                        <div className="flex    w-[100%] mt-[50px] ">
                             <div className="flex flex-col w-[50%] gap-[5px]">
-                                <a>Họ và tên: {sinhvien.hoten}</a>
+                                <a>Họ và tên: <span className="font-bold">{sinhvien.hoten}</span> </a>
 
-                                <a>Giới tính: {sinhvien.goitinh}</a>
+                                <a>Giới tính:<span className="font-bold"> {sinhvien.goitinh}</span></a>
 
-                                <a>Mã sinh viên: {sinhvien.masinhvien}</a>
+                                <a>Mã sinh viên:<span className="font-bold">{sinhvien.masinhvien}</span> </a>
 
-                                <a>Số CCCD: {sinhvien.socmnd}</a>
+                                <a>Số CCCD:<span className="font-bold">{sinhvien.socmnd}</span> </a>
 
-                                <a>Hình thức đào tạo: {sinhvien.hedaotao}</a>
+                                <a>Hình thức đào tạo:<span className="font-bold">{sinhvien.hedaotao}</span> </a>
 
                                 <a>Trình độ đào tạo: ..........</a>
                             </div>
                             <div className="flex flex-col w-[50%] gap-[5px]">
-                                <a>Ngôn ngữ đào tạo: Tiếng việt</a>
+                                <a>Ngôn ngữ đào tạo:<span className="font-bold">Tiếng việt</span> </a>
 
-                                <a>Ngày sinh: {sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</a>
+                                <a>Ngày sinh:<span className="font-bold">{sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
 
-                                <a> {sinhvien.tenkhoahoc}</a>
+                                <a>{sinhvien.tenkhoahoc}</a>
 
-                                <a>Chuyên ngành: {sinhvien.tennganh}</a>
+                                <a>Chuyên ngành:<span className="font-bold"> {sinhvien.tennganh}</span> </a>
 
-                                <a>Ngày nhập học: {sinhvien.ngayvaotruong}</a>
+                                <a>Ngày nhập học:<span className="font-bold">  {sinhvien.ngayvaotruong}</span></a>
 
-                                <a>Thời gian đào tạo: {sinhvien.thoigiandaotao}</a>
+                                <a>Thời gian đào tạo:<span className="font-bold"> {sinhvien.thoigiandaotao}</span> </a>
                             </div>
                         </div>
-                        <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi}  />
+                        <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi} />
                         <div className="flex justify-between mt-[30px] ">
                             <div className="flex flex-col gap-[5px]">
                                 <a >Tên đề tài tốt nghiệp: <span className="font-bold">{sinhvien.tendetai}</span></a>

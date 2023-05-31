@@ -79,6 +79,23 @@ export default function SignIn() {
     // Prepare sign in with strategy and identifier
     setLoading(true);
     // console.log(email)
+    await signIn
+        .create({
+          strategy: "email_link",
+          identifier: email,
+          redirectUrl: `${window.location.origin}/reset-password`,
+        })
+        .then((res) => {
+          if (res.status === "needs_first_factor")
+            setProgress("forGotPassSent");
+          setLoading(false);
+        })
+        .catch((err) => {
+          setProgress(err.errors[0].message);
+          setLoading(false);
+        });
+
+
   }
 
   return (
