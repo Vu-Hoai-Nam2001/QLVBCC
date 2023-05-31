@@ -61,7 +61,8 @@ function Hard() {
 }
 function App() {
   return (
-    <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLIC_KEY}>
+    // <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLIC_KEY}>
+      <ClerkProvider publishableKey='pk_test_ZnVsbC1nYXJmaXNoLTExLmNsZXJrLmFjY291bnRzLmRldiQ'>
 
       <Routes>
         <Route path="/signin" element={<>
