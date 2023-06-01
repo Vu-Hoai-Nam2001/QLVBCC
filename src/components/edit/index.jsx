@@ -2,7 +2,7 @@ import "../../App.css";
 import { BsSearch } from "react-icons/bs"
 import PLVB from "./PLVS"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useClerk } from "@clerk/clerk-react";
 // import Table from "./Table"
 
@@ -37,11 +37,34 @@ export default function Index() {
   // }, []);
   const { user } = useClerk();
   const magv = user.publicMetadata.magv
+  const [role, setRole] = useState('3');
+  useEffect(() => {
+    console.log("gọi lại api")
+    const callApi = async () => {
+
+      await fetch(`${import.meta.env.VITE_API_GET_ROLE}${user.publicMetadata.magv}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-hasura-admin-secret': `${import.meta.env.VITE_VALUE_HASURA}`,
+        },
+        // body:JSON.stringify({masv:'1912101003'})
+
+      })
+        .then(response => response.json())
+        .then(datasv => {
+          setRole(datasv.users[0].role_id)
+
+        });
+    }
+    callApi();
+  }, [user.publicMetadata.magv]);
+
 
   console.log(user.publicMetadata.magv)
   return (
     <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px] min-h-[420px]">
-      {magv !== undefined ? <><div className="flex justify-end">
+      {role===2||role===4 && magv !== undefined  ? <><div className="flex justify-end">
         <div className="relative w-[20%] ">
           <input value={masv} onChange={e => setMasv(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Nhập msv hoặc số cmt" />
           <span className="absolute inset-y-0 right-0 flex items-center pr-2">
@@ -63,7 +86,7 @@ export default function Index() {
 
         
 
-        {show && <PLVB data={masv2} />}
+        { show && <PLVB data={masv2} />}
         
         {/* <Table/> */}
       </> : <>
