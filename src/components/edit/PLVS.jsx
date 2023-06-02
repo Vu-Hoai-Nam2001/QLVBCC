@@ -77,7 +77,7 @@ export default function Index(props) {
                             <a>Ngày sinh: <span className="font-bold">{sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
                             <a>Giới tính: <span className="font-bold">{sinhvien.goitinh}</span> </a>
                             <a>Ngành: <span className="font-bold">{sinhvien.tennganh} </span></a>
-                            <a > {sinhvien.tenkhoahoc}</a>
+                            <a>{sinhvien.tenkhoahoc.slice(0, 4)}: <span className="font-semibold">{sinhvien.tenkhoahoc.slice(4)}</span> </a>
                         </div>
                     </div>
                    
