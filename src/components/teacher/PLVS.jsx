@@ -87,7 +87,7 @@ export default function Index({ data, setDataMasv }) {
 
                                 <a>{sinhvien.tenkhoahoc.slice(0, 4)}: <span className="font-semibold">{sinhvien.tenkhoahoc.slice(4)}</span> </a>
 
-                                <a>Chuyên ngành:<span className="font-semibold"> {sinhvien.tennganh}</span> </a>
+                                <a>Ngành:<span className="font-semibold"> {sinhvien.tennganh}</span> </a>
 
                                 <a>Ngày nhập học:<span className="font-semibold">  {sinhvien.ngayvaotruong}</span></a>
 
