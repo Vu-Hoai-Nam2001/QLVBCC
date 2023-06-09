@@ -24,7 +24,7 @@ import { useEffect, useState } from "react"
 //     SHVB: "123123",
 //     SVSNCB: "234234",
 // }
-export default function Index({ masv, setGetdata }) {
+export default function Index({ masv}) {
     const [datasv, setDatasv] = useState([])
     const [tinchi, setTinchi] = useState(0)
 
@@ -44,9 +44,10 @@ export default function Index({ masv, setGetdata }) {
             })
             .catch(error => {
                 console.error(error); // Handle any errors
+                
             });
     }, [masv])
-    setGetdata(datasv)
+    
     // useEffect(() => {
     //     console.log("gọi lại api")
     //     const callApi = async () => {
@@ -74,6 +75,7 @@ export default function Index({ masv, setGetdata }) {
 
     return (
         <div>
+            {datasv.length===0 && <div className="flex text-red-700 text-[30px] w-[100%] items-center justify-center py-[50px]">Không tìm thấy kết quả  </div>}
             {datasv && datasv.map((sinhvien, index) => (
                 <div key={index} >
                     <div className="flex justify-between mt-[30px]">
@@ -133,7 +135,7 @@ export default function Index({ masv, setGetdata }) {
                     <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi} />
                     <div className="flex justify-between mt-[30px] ml-[2%] ">
                         <div className="flex flex-col gap-[5px]">
-                            <a >Tên đề tài tốt nghiệp: <span className="font-semibold">{sinhvien.tendetai}</span></a>
+                            {/* <a >Tên đề tài tốt nghiệp: <span className="font-semibold">{sinhvien.tendetai}</span></a> */}
 
                             <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-semibold"> {sinhvien.diem4}</span></a>
 

@@ -12,7 +12,6 @@ export default function Index({ data, setDataMasv }) {
     useEffect(() => {
         console.log("gọi lại api")
         const callApi = async () => {
-
             await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH}${data}`, {
                 method: 'GET',
                 headers: {
@@ -29,7 +28,12 @@ export default function Index({ data, setDataMasv }) {
                     setDatasv(datasv.f_get_ttsv5)
                     setDataMasv(datasv.f_get_ttsv5[0].masinhvien)
 
+                })
+                .catch(error => {
+                    console.error(error); // Handle any errors
+                    
                 });
+                
         }
         callApi();
     }, [data]);
@@ -40,6 +44,7 @@ export default function Index({ data, setDataMasv }) {
 
     return (
         <div>
+            {datasv.length===0 && <div className="flex text-red-700 text-[30px] w-[100%] items-center justify-center py-[50px]">Không tìm thấy kết quả  </div>}
             {datasv && datasv.map((sinhvien, index) => (
                 <div key={index}>
                     <div className="flex justify-between mt-[30px]">
@@ -68,22 +73,22 @@ export default function Index({ data, setDataMasv }) {
                     <div className="ml-[3%]">
                         <div className="flex    w-[100%] mt-[50px] ">
                             <div className="flex flex-col w-[50%] gap-[5px]">
-                                <a>Họ và tên: <span className="font-semibold">{sinhvien.hoten}</span> </a>
+                                <a>Họ và tên: <span className="font-semibold"> {sinhvien.hoten}</span> </a>
 
                                 <a>Giới tính:<span className="font-semibold"> {sinhvien.goitinh}</span></a>
 
-                                <a>Mã sinh viên:<span className="font-semibold">{sinhvien.masinhvien}</span> </a>
+                                <a>Mã sinh viên:<span className="font-semibold"> {sinhvien.masinhvien}</span> </a>
 
-                                <a>Số CCCD:<span className="font-semibold">{sinhvien.socmnd}</span> </a>
+                                <a>Số CCCD:<span className="font-semibold"> {sinhvien.socmnd}</span> </a>
 
-                                <a>Hình thức đào tạo:<span className="font-semibold">{sinhvien.hedaotao}</span> </a>
+                                <a>Hình thức đào tạo:<span className="font-semibold"> {sinhvien.hedaotao}</span> </a>
 
                                 <a>Trình độ đào tạo: ..........</a>
                             </div>
                             <div className="flex flex-col w-[50%] gap-[5px]">
-                                <a>Ngôn ngữ đào tạo:<span className="font-semibold">Tiếng việt</span> </a>
+                                <a>Ngôn ngữ đào tạo:<span className="font-semibold"> Tiếng việt</span> </a>
 
-                                <a>Ngày sinh:<span className="font-semibold">{sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
+                                <a>Ngày sinh:<span className="font-semibold"> {sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
 
                                 <a>{sinhvien.tenkhoahoc.slice(0, 4)}: <span className="font-semibold">{sinhvien.tenkhoahoc.slice(4)}</span> </a>
 
@@ -97,7 +102,7 @@ export default function Index({ data, setDataMasv }) {
                         <Table masinhvien={sinhvien.masinhvien} setTinchi={setTinchi} />
                         <div className="flex justify-between mt-[30px] ">
                             <div className="flex flex-col gap-[5px]">
-                                <a >Tên đề tài tốt nghiệp: <span className="font-semibold">{sinhvien.tendetai}</span></a>
+                                {/* <a >Tên đề tài tốt nghiệp: <span className="font-semibold">{sinhvien.tendetai}</span></a> */}
 
                                 <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-semibold"> {sinhvien.diem4}</span></a>
 

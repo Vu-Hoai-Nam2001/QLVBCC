@@ -107,7 +107,7 @@ export default function Index() {
                         <Table setTinchi={setTinchi} />
                         <div className="flex justify-between mt-[30px] ">
                             <div className="flex flex-col gap-[5px]">
-                                <a >Tên đề tài tốt nghiệp: <span className="font-semibold">{sinhvien.tendetai}</span></a>
+                                {/* <a >Tên đề tài tốt nghiệp: <span className="font-semibold">{sinhvien.tendetai}</span></a> */}
 
                                 <a >Điểm trung bình toàn khóa(hệ 4):<span className="font-semibold">{sinhvien.diem4}</span></a>
 

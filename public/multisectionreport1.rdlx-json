@@ -51,6 +51,13 @@
                 "DataProvider": "JSONEMBED",
                 "ConnectString": "jsondata={\\n    \"masinhvien\": \"example\",\\n    \"hoten\": \"example\",\\n    \"nganysinh\": \"example\",\\n    \"socmnd\": \"example\",\\n    \"goitinh\": \"example\",\\n    \"tennganh\": \"example\",\\n    \"ngayvaotruong\": null,\\n    \"hedaotao\": \"example\",\\n    \"tenkhoahoc\": \"example\",\\n    \"sohieubang\": null,\\n    \"sovaoso\": null,\\n    \"xeploaitotnghiep\": \"example\",\\n    \"thoigiandaotao\": \"example\",\\n    \"tendetai\": \"example\",\\n\"qrcode\":\"example\",\\n\"diem4\":\"example\"\\n}"
             }
+        },
+        {
+            "Name": "DataSource2",
+            "ConnectionProperties": {
+                "DataProvider": "JSONEMBED",
+                "ConnectString": "jsondata=[\\n{\\n\"stt\":\"example\",\\n    \"masinhvien\": \"example\",\\n    \"machungchi\": \"example\",\\n    \"ten\": \"example\"\\n\\n}\\n]"
+            }
         }
     ],
     "ReportSections": [
@@ -69,7 +76,7 @@
             },
             "Width": "7.5074in",
             "Body": {
-                "Height": "17.918cm",
+                "Height": "19.188cm",
                 "ReportItems": [
                     {
                         "Type": "image",
@@ -436,26 +443,6 @@
                     },
                     {
                         "Type": "textbox",
-                        "Name": "TextBox10",
-                        "ZIndex": 21,
-                        "DataElementName": "TextBox1",
-                        "CanGrow": true,
-                        "KeepTogether": true,
-                        "Value": "Tên đề tài tốt nghiệp:",
-                        "Style": {
-                            "FontFamily": "Montserrat",
-                            "PaddingLeft": "2pt",
-                            "PaddingRight": "2pt",
-                            "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
-                        },
-                        "Left": "1.265cm",
-                        "Top": "12.735cm",
-                        "Width": "3.894cm",
-                        "Height": "0.75cm"
-                    },
-                    {
-                        "Type": "textbox",
                         "Name": "TextBox17",
                         "ZIndex": 22,
                         "DataElementName": "TextBox1",
@@ -470,7 +457,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "14.017cm",
+                        "Top": "15.287cm",
                         "Width": "6.346cm",
                         "Height": "0.75cm"
                     },
@@ -490,7 +477,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.264cm",
-                        "Top": "14.835cm",
+                        "Top": "16.105cm",
                         "Width": "3.125cm",
                         "Height": "0.75cm"
                     },
@@ -510,7 +497,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "15.605cm",
+                        "Top": "16.875cm",
                         "Width": "4.208cm",
                         "Height": "0.75cm"
                     },
@@ -530,7 +517,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "16.376cm",
+                        "Top": "17.646cm",
                         "Width": "3.629cm",
                         "Height": "0.75cm"
                     },
@@ -550,7 +537,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "17.168cm",
+                        "Top": "18.438cm",
                         "Width": "5.577cm",
                         "Height": "0.75cm"
                     },
@@ -571,7 +558,7 @@
                             "TextAlign": "Right"
                         },
                         "Left": "2.4298in",
-                        "Top": "6.1619in",
+                        "Top": "6.6619in",
                         "Width": "5.0461in",
                         "Height": "0.2953in"
                     },
@@ -591,7 +578,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "13.949cm",
-                        "Top": "16.447cm",
+                        "Top": "17.717cm",
                         "Width": "3.44cm",
                         "Height": "0.75cm"
                     },
@@ -611,7 +598,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "12.383cm",
-                        "Top": "17.149cm",
+                        "Top": "18.419cm",
                         "Width": "6.612cm",
                         "Height": "0.75cm"
                     },
@@ -632,7 +619,7 @@
                             "TextAlign": "Left"
                         },
                         "Left": "5.103cm",
-                        "Top": "15.596cm",
+                        "Top": "16.866cm",
                         "Width": "3.774cm",
                         "Height": "0.75cm"
                     },
@@ -1303,7 +1290,7 @@
                             ]
                         },
                         "Left": "0.5215in",
-                        "Top": "4.0049in",
+                        "Top": "3.984in",
                         "Width": "6.6803in",
                         "Height": "1cm"
                     },
@@ -1499,25 +1486,6 @@
                     },
                     {
                         "Type": "textbox",
-                        "Name": "TextBox28",
-                        "ZIndex": 60,
-                        "CanGrow": true,
-                        "KeepTogether": true,
-                        "Value": "=First(Fields!tendetai.Value, \"DataSet1\")",
-                        "Style": {
-                            "FontFamily": "Montserrat",
-                            "PaddingLeft": "2pt",
-                            "PaddingRight": "2pt",
-                            "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
-                        },
-                        "Left": "2in",
-                        "Top": "5.0208in",
-                        "Width": "5.4866in",
-                        "Height": "0.4819in"
-                    },
-                    {
-                        "Type": "textbox",
                         "Name": "TextBox29",
                         "ZIndex": 61,
                         "CanGrow": true,
@@ -1531,7 +1499,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.7938in",
-                        "Top": "6.4604in",
+                        "Top": "6.9604in",
                         "Width": "1in",
                         "Height": "0.25in"
                     },
@@ -1550,7 +1518,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "2.5785in",
-                        "Top": "6.759in",
+                        "Top": "7.259in",
                         "Width": "1in",
                         "Height": "0.25in"
                     },
@@ -1599,7 +1567,7 @@
                             "RepeatOnNewPage": true
                         },
                         "Left": "3.356cm",
-                        "Top": "14.869cm",
+                        "Top": "16.139cm",
                         "Width": "1.536cm",
                         "Height": "0.675cm"
                     },
@@ -1652,8 +1620,270 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "5.117cm",
-                        "Top": "14.03cm",
+                        "Top": "15.3cm",
                         "Width": "3.475cm",
+                        "Height": "0.75cm"
+                    },
+                    {
+                        "Type": "table",
+                        "Name": "Table3",
+                        "ZIndex": 67,
+                        "DataSetName": "Field11",
+                        "TableColumns": [
+                            {
+                                "Width": "0.89cm"
+                            },
+                            {
+                                "Width": "2.322cm"
+                            },
+                            {
+                                "Width": "6.693cm"
+                            },
+                            {
+                                "Width": "1.48cm"
+                            },
+                            {
+                                "Width": "2.096cm"
+                            },
+                            {
+                                "Width": "2.08cm"
+                            },
+                            {
+                                "Width": "1.405cm"
+                            }
+                        ],
+                        "Details": {
+                            "TableRows": [
+                                {
+                                    "Height": "0.75cm",
+                                    "TableCells": [
+                                        {
+                                            "Item": {
+                                                "Type": "textbox",
+                                                "Name": "TextBox35",
+                                                "DataElementName": "stt",
+                                                "CanGrow": true,
+                                                "KeepTogether": true,
+                                                "Value": "=Fields!stt.Value",
+                                                "Style": {
+                                                    "BottomBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "LeftBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "FontFamily": "Montserrat",
+                                                    "FontSize": "8pt",
+                                                    "PaddingLeft": "2pt",
+                                                    "PaddingRight": "2pt",
+                                                    "PaddingTop": "2pt",
+                                                    "PaddingBottom": "2pt",
+                                                    "TextAlign": "Center"
+                                                },
+                                                "Left": "0cm",
+                                                "Top": "0cm",
+                                                "Width": "0.89cm",
+                                                "Height": "0.75cm"
+                                            }
+                                        },
+                                        {
+                                            "Item": {
+                                                "Type": "textbox",
+                                                "Name": "TextBox37",
+                                                "DataElementName": "machungchi",
+                                                "CanGrow": true,
+                                                "KeepTogether": true,
+                                                "Value": "=Fields!machungchi.Value",
+                                                "Style": {
+                                                    "Border": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "TopBorder": {
+                                                        "Style": "None",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "BottomBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "LeftBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "RightBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "FontFamily": "Montserrat",
+                                                    "FontSize": "8pt",
+                                                    "PaddingLeft": "2pt",
+                                                    "PaddingRight": "2pt",
+                                                    "PaddingTop": "2pt",
+                                                    "PaddingBottom": "2pt",
+                                                    "TextAlign": "Center"
+                                                },
+                                                "Left": "0cm",
+                                                "Top": "0cm",
+                                                "Width": "2.322cm",
+                                                "Height": "0.75cm"
+                                            }
+                                        },
+                                        {
+                                            "Item": {
+                                                "Type": "textbox",
+                                                "Name": "TextBox38",
+                                                "DataElementName": "ten",
+                                                "CanGrow": true,
+                                                "KeepTogether": true,
+                                                "Value": "=Fields!ten.Value",
+                                                "Style": {
+                                                    "BottomBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "LeftBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "FontFamily": "Montserrat",
+                                                    "FontSize": "8pt",
+                                                    "PaddingLeft": "2pt",
+                                                    "PaddingRight": "2pt",
+                                                    "PaddingTop": "2pt",
+                                                    "PaddingBottom": "2pt"
+                                                },
+                                                "Left": "0cm",
+                                                "Top": "0cm",
+                                                "Width": "6.693cm",
+                                                "Height": "0.75cm"
+                                            }
+                                        },
+                                        {
+                                            "Item": {
+                                                "Type": "textbox",
+                                                "Name": "TextBox28",
+                                                "DataElementName": "TextBox1",
+                                                "CanGrow": true,
+                                                "KeepTogether": true,
+                                                "Style": {
+                                                    "BottomBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "LeftBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "PaddingLeft": "2pt",
+                                                    "PaddingRight": "2pt",
+                                                    "PaddingTop": "2pt",
+                                                    "PaddingBottom": "2pt"
+                                                },
+                                                "Left": "0cm",
+                                                "Top": "0cm",
+                                                "Width": "1.48cm",
+                                                "Height": "0.75cm"
+                                            }
+                                        },
+                                        {
+                                            "Item": {
+                                                "Type": "textbox",
+                                                "Name": "TextBox10",
+                                                "DataElementName": "TextBox1",
+                                                "CanGrow": true,
+                                                "KeepTogether": true,
+                                                "Style": {
+                                                    "BottomBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "LeftBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "PaddingLeft": "2pt",
+                                                    "PaddingRight": "2pt",
+                                                    "PaddingTop": "2pt",
+                                                    "PaddingBottom": "2pt"
+                                                },
+                                                "Left": "0cm",
+                                                "Top": "0cm",
+                                                "Width": "2.096cm",
+                                                "Height": "0.75cm"
+                                            }
+                                        },
+                                        {
+                                            "Item": {
+                                                "Type": "textbox",
+                                                "Name": "TextBox34",
+                                                "DataElementName": "TextBox1",
+                                                "CanGrow": true,
+                                                "KeepTogether": true,
+                                                "Style": {
+                                                    "BottomBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "LeftBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "PaddingLeft": "2pt",
+                                                    "PaddingRight": "2pt",
+                                                    "PaddingTop": "2pt",
+                                                    "PaddingBottom": "2pt"
+                                                },
+                                                "Left": "0cm",
+                                                "Top": "0cm",
+                                                "Width": "2.08cm",
+                                                "Height": "0.75cm"
+                                            }
+                                        },
+                                        {
+                                            "Item": {
+                                                "Type": "textbox",
+                                                "Name": "TextBox32",
+                                                "DataElementName": "TextBox1",
+                                                "CanGrow": true,
+                                                "KeepTogether": true,
+                                                "Value": "ĐẠT",
+                                                "Style": {
+                                                    "BottomBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "LeftBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "RightBorder": {
+                                                        "Style": "Solid",
+                                                        "Width": "0.25pt"
+                                                    },
+                                                    "FontFamily": "Montserrat",
+                                                    "FontSize": "8pt",
+                                                    "PaddingLeft": "2pt",
+                                                    "PaddingRight": "2pt",
+                                                    "PaddingTop": "2pt",
+                                                    "PaddingBottom": "2pt",
+                                                    "TextAlign": "Center"
+                                                },
+                                                "Left": "0cm",
+                                                "Top": "0cm",
+                                                "Width": "1.405cm",
+                                                "Height": "0.75cm"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "Left": "1.325cm",
+                        "Top": "11.146cm",
+                        "Width": "16.966cm",
                         "Height": "0.75cm"
                     }
                 ],
@@ -1817,6 +2047,51 @@
             "Query": {
                 "DataSourceName": "DataSource1",
                 "CommandText": "jpath=$"
+            },
+            "CaseSensitivity": "Auto",
+            "KanatypeSensitivity": "Auto",
+            "AccentSensitivity": "Auto",
+            "WidthSensitivity": "Auto"
+        },
+        {
+            "Name": "DataSet2",
+            "Fields": [
+                {
+                    "Name": "Field1",
+                    "DataField": "Field1"
+                }
+            ],
+            "Query": {
+                "DataSourceName": "DataSource2",
+                "CommandText": "jpath=$"
+            },
+            "CaseSensitivity": "Auto",
+            "KanatypeSensitivity": "Auto",
+            "AccentSensitivity": "Auto",
+            "WidthSensitivity": "Auto"
+        },
+        {
+            "Name": "Field11",
+            "Fields": [
+                {
+                    "Name": "stt",
+                    "DataField": "stt"
+                },
+                {
+                    "Name": "masinhvien",
+                    "DataField": "masinhvien"
+                },
+                {
+                    "Name": "machungchi",
+                    "DataField": "machungchi"
+                },
+                {
+                    "Name": "ten",
+                    "DataField": "ten"
+                }
+            ],
+            "Query": {
+                "DataSourceName": "$dataset:DataSet2/Field1"
             },
             "CaseSensitivity": "Auto",
             "KanatypeSensitivity": "Auto",
