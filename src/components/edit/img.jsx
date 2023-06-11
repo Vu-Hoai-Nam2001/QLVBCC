@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react"
 import swal from 'sweetalert';
+import { useClerk } from "@clerk/clerk-react";
 
-export default function Index({datasv}) {
-   
-
-
+export default function Index({ datasv }) {
 
 
+
+
+    const { user } = useClerk();
+    console.log(user.publicMetadata.name); 
     const [linkanh, setLinkanh] = useState(`${datasv[0].qrcode}`)
     const [anh, setAnh] = useState()
     const [image, setImage] = useState("")
     const [dataurl, setDataurl] = useState("")
-        // setTendetai(datasv.tendetai)
+    // setTendetai(datasv.tendetai)
     // useEffect(()=>{
     //     datasv && setTendetai(datasv[0].tendetai)
     // },[datasv])
@@ -41,7 +43,7 @@ export default function Index({datasv}) {
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     //updete ảnh 
-    
+
 
 
     useEffect(() => {
@@ -88,7 +90,7 @@ export default function Index({datasv}) {
                     //     window.location.href = "/edit";
                     // });
                 });
-                
+
             }).catch((err) => {
                 console.log(err);
             })
@@ -96,10 +98,29 @@ export default function Index({datasv}) {
         setImage(data)
     }
     console.log(dataurl);
+
+    const APIlichsuchinhsua = async () => {
+
+        await fetch(`https://qlvbcc.hasura.app/api/rest/lschinhsuaqrcode`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c',
+            },
+            body: JSON.stringify({
+                masv: `${datasv[0].masinhvien}`,
+                nguoisua: `${user.publicMetadata.name}`
+                
+            })
+
+        })
+            .then(response => response.json())
+
+    }
     return (
         <div className="flex flex-col w-[50%]  pt-[30px]">
-            
-            
+
+
             <div className="flex flex-col ">
 
                 <input
@@ -121,19 +142,20 @@ export default function Index({datasv}) {
                         }).then((value) => {
                             if (value === true) {
 
-                               
+
                                 
                                 submitImage()
-                                swal("Cập nhật ảnh thành công!", "Nhấn OK để tiếp tục!", "success").then(() => {
-                                    // window.location.href = "/edit";
-                                    // handleClick();
-                                    // swal("Lưu thành công!", "Nhấn OK để thoát!", "success").then(() => {
+                                APIlichsuchinhsua()
+                                // swal("Cập nhật ảnh thành công!", "Nhấn OK để tiếp tục!", "success").then(() => {
+                                //     // window.location.href = "/edit";
+                                //     // handleClick();
+                                //     // swal("Lưu thành công!", "Nhấn OK để thoát!", "success").then(() => {
 
-                                    //     window.location.href = "/edit";
-                                    // });
-                                });
+                                //     //     window.location.href = "/edit";
+                                //     // });
+                                // });
                             }
-                        }) }
+                        })}
                 >
                     Lưu sửa mã qr
                 </button>

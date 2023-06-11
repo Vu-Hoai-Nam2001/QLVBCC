@@ -1,37 +1,38 @@
 import "../../App.css";
 import { useEffect, useState } from "react"
 import { useAuth } from "@clerk/clerk-react";
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 import ImdEdit from "./img.jsx"
+import QRCode from 'qrcode.react';
 
 export default function Index(props) {
     //update tên đề tài 
     const [datasv, setDatasv] = useState()
     const { getToken } = useAuth();
-    const [tendetai, setTendetai] = useState('')
+    // const [tendetai, setTendetai] = useState('')
     //update ảnh
-   
+
     const [dataanh, setataanh] = useState("")
-    const handleClick = async () => {
+    // const handleClick = async () => {
 
-        await fetch(`https://qlvbcc.hasura.app/api/rest/update_tendetai`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c',
-            },
-            body: JSON.stringify({
-                masinhvien: `${props.data}`,
-                tendetai: `${tendetai}`,
-            })
+    //     await fetch(`https://qlvbcc.hasura.app/api/rest/update_tendetai`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c',
+    //         },
+    //         body: JSON.stringify({
+    //             masinhvien: `${props.data}`,
+    //             tendetai: `${tendetai}`,
+    //         })
 
-        })
-            .then(response => response.json())
+    //     })
+    //         .then(response => response.json())
 
-    }
-    
-    
-    
+    // }
+
+
+
 
     useEffect(() => {
         console.log("gọi lại api")
@@ -50,10 +51,10 @@ export default function Index(props) {
             })
                 .then(response => response.json())
                 .then(datasv => {
-                    setTendetai(datasv.f_get_ttsv5[0].tendetai)
+                    // setTendetai(datasv.f_get_ttsv5[0].tendetai)
                     setataanh(datasv.f_get_ttsv5[0].qrcode)
                     setDatasv(datasv.f_get_ttsv5)
-                    
+
 
                 });
         }
@@ -62,10 +63,33 @@ export default function Index(props) {
     console.log(datasv)
     console.log(dataanh);
 
+    const [url, setUrl] = useState('');
+    const [qrCodeValue, setQrCodeValue] = useState('');
+
+    const handleUrlChange = (event) => {
+        setUrl(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setQrCodeValue(url);
+    }
+    const saveImage = () => {
+        const canvas = document.getElementById('qrCodeCanvas');
+        const dataURL = canvas.toDataURL('image/png');
+
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'qrcode.png';
+        link.click();
+    };
+
+    console.log(qrCodeValue);
 
 
     return (
         <div >
+            
             {datasv && datasv.map((sinhvien, index) => (
                 <div key={index} >
                     <div className="flex    w-[100%] mt-[50px] ">
@@ -73,15 +97,15 @@ export default function Index(props) {
                             <a>Họ và tên: <span className="font-semibold">{sinhvien.hoten}</span></a>
                             <a>Mã sinh viên:<span className="font-semibold">{sinhvien.masinhvien}</span> </a>
                             <a>Số CCCD: <span className="font-semibold">{sinhvien.socmnd}</span></a>
-                            
+
                             <a>Ngày sinh: <span className="font-semibold">{sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
                             <a>Giới tính: <span className="font-semibold">{sinhvien.goitinh}</span> </a>
                             <a>Ngành: <span className="font-semibold">{sinhvien.tennganh} </span></a>
                             <a>{sinhvien.tenkhoahoc.slice(0, 4)}: <span className="font-semibold">{sinhvien.tenkhoahoc.slice(4)}</span> </a>
                         </div>
                     </div>
-                   
-                    <div className="flex  ">
+
+                    {/* <div className="flex  ">
                         <div className="flex flex-col gap-[5px]">
                             <a >Tên đề tài tốt nghiệp:</a>
                             <textarea className=" w-[400px] pl-[10px]  rounded-[8px] border border-black mt-[5px]"
@@ -98,8 +122,8 @@ export default function Index(props) {
 
                         </div>
 
-                    </div>
-                    <button
+                    </div> */}
+                    {/* <button
                         onClick={() => {
                             swal("Bạn có chắc chắn muốn sửa ?", {
                                 buttons: ["Hủy!", true],
@@ -122,11 +146,35 @@ export default function Index(props) {
                         }}
                         className="mt-[5px]  w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black hover:bg-red-600 hover:text-white">
                         Lưu Sửa Tên Đề Tài
-                    </button>
+                    </button> */}
                 </div>
             ))}
-            {datasv && <ImdEdit  datasv={datasv}/>}
-            
+            <div className="App ">
+                <h1>Tạo mã QRCode</h1>
+                <form onSubmit={handleSubmit} className="mb-[20px]">
+                    <input
+                        type="text"
+                        placeholder="Nhập link dẫn "
+                        value={url}
+                        onChange={handleUrlChange}
+                        className="w-[300px] pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]"
+                    />
+                    <br/>
+                    <button type="submit" className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                    border border-black hover:bg-red-600 hover:text-white">
+                        Tạo mã QRCode
+                    </button>
+                </form>
+                {qrCodeValue && (
+                    <div className="qrcode-container">
+                        <QRCode value={qrCodeValue} id="qrCodeCanvas" />
+                        <button onClick={saveImage } className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                    border border-black hover:bg-red-600 hover:text-white">Tải xuống ảnh</button>
+                    </div>
+                )}
+            </div>
+            {datasv && <ImdEdit datasv={datasv} />}
+
         </div>
     )
 }

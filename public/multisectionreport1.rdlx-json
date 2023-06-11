@@ -76,7 +76,7 @@
             },
             "Width": "7.5074in",
             "Body": {
-                "Height": "19.188cm",
+                "Height": "16.648cm",
                 "ReportItems": [
                     {
                         "Type": "image",
@@ -388,7 +388,7 @@
                         "DataElementName": "TextBox1",
                         "CanGrow": true,
                         "KeepTogether": true,
-                        "Value": "Chuyên ngành:",
+                        "Value": "Ngành:",
                         "Style": {
                             "FontFamily": "Montserrat",
                             "PaddingLeft": "2pt",
@@ -398,7 +398,7 @@
                         },
                         "Left": "9.549cm",
                         "Top": "7.446cm",
-                        "Width": "3.102cm",
+                        "Width": "1.444cm",
                         "Height": "0.75cm"
                     },
                     {
@@ -457,7 +457,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "15.287cm",
+                        "Top": "12.747cm",
                         "Width": "6.346cm",
                         "Height": "0.75cm"
                     },
@@ -477,7 +477,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.264cm",
-                        "Top": "16.105cm",
+                        "Top": "13.565cm",
                         "Width": "3.125cm",
                         "Height": "0.75cm"
                     },
@@ -497,7 +497,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "16.875cm",
+                        "Top": "14.335cm",
                         "Width": "4.208cm",
                         "Height": "0.75cm"
                     },
@@ -517,7 +517,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "17.646cm",
+                        "Top": "15.106cm",
                         "Width": "3.629cm",
                         "Height": "0.75cm"
                     },
@@ -537,7 +537,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "1.265cm",
-                        "Top": "18.438cm",
+                        "Top": "15.898cm",
                         "Width": "5.577cm",
                         "Height": "0.75cm"
                     },
@@ -558,7 +558,7 @@
                             "TextAlign": "Right"
                         },
                         "Left": "2.4298in",
-                        "Top": "6.6619in",
+                        "Top": "5.6619in",
                         "Width": "5.0461in",
                         "Height": "0.2953in"
                     },
@@ -578,7 +578,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "13.949cm",
-                        "Top": "17.717cm",
+                        "Top": "15.177cm",
                         "Width": "3.44cm",
                         "Height": "0.75cm"
                     },
@@ -598,7 +598,7 @@
                             "PaddingBottom": "2pt"
                         },
                         "Left": "12.383cm",
-                        "Top": "18.419cm",
+                        "Top": "15.879cm",
                         "Width": "6.612cm",
                         "Height": "0.75cm"
                     },
@@ -619,8 +619,8 @@
                             "TextAlign": "Left"
                         },
                         "Left": "5.103cm",
-                        "Top": "16.866cm",
-                        "Width": "3.774cm",
+                        "Top": "14.326cm",
+                        "Width": "2.716cm",
                         "Height": "0.75cm"
                     },
                     {
@@ -1306,11 +1306,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "1.5112in",
-                        "Top": "2.5805in",
-                        "Width": "1.9578in",
+                        "Left": "1.4439in",
+                        "Top": "2.575in",
+                        "Width": "1.6806in",
                         "Height": "0.25in"
                     },
                     {
@@ -1325,10 +1326,11 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "1.4486in",
-                        "Top": "2.0201in",
+                        "Left": "1.2821in",
+                        "Top": "2.0099in",
                         "Width": "2.0222in",
                         "Height": "0.25in"
                     },
@@ -1344,11 +1346,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "1.3819in",
+                        "Left": "1.2154in",
                         "Top": "2.3236in",
-                        "Width": "1.5958in",
+                        "Width": "0.9824in",
                         "Height": "0.25in"
                     },
                     {
@@ -1363,11 +1366,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "1.502in",
-                        "Top": "2.9131in",
-                        "Width": "2.0222in",
+                        "Left": "1.2681in",
+                        "Top": "2.9029in",
+                        "Width": "1.8659in",
                         "Height": "0.25in"
                     },
                     {
@@ -1382,11 +1386,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
                         "Left": "1.8319in",
                         "Top": "3.2132in",
-                        "Width": "2.1257in",
+                        "Width": "1.9181in",
                         "Height": "0.25in"
                     },
                     {
@@ -1401,11 +1406,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "4.5785in",
-                        "Top": "2.3409in",
-                        "Width": "2.6188in",
+                        "Left": "4.5699in",
+                        "Top": "2.3189in",
+                        "Width": "2.1801in",
                         "Height": "0.25in"
                     },
                     {
@@ -1420,11 +1426,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "4.253in",
-                        "Top": "2.6359in",
-                        "Width": "1.5771in",
+                        "Left": "4.2648in",
+                        "Top": "2.6123in",
+                        "Width": "0.7352in",
                         "Height": "0.25in"
                     },
                     {
@@ -1439,10 +1446,11 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "4.9291in",
-                        "Top": "3.25in",
+                        "Left": "4.9176in",
+                        "Top": "3.2445in",
                         "Width": "2.2493in",
                         "Height": "0.25in"
                     },
@@ -1458,11 +1466,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "4.891in",
-                        "Top": "2.9472in",
-                        "Width": "2.2688in",
+                        "Left": "4.3386in",
+                        "Top": "2.9417in",
+                        "Width": "2.1586in",
                         "Height": "0.25in"
                     },
                     {
@@ -1477,11 +1486,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "5.0617in",
-                        "Top": "3.5162in",
-                        "Width": "2.1451in",
+                        "Left": "5.0283in",
+                        "Top": "3.5099in",
+                        "Width": "0.6695in",
                         "Height": "0.25in"
                     },
                     {
@@ -1496,11 +1506,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
                         "Left": "1.7938in",
-                        "Top": "6.9604in",
-                        "Width": "1in",
+                        "Top": "5.9604in",
+                        "Width": "0.9154in",
                         "Height": "0.25in"
                     },
                     {
@@ -1515,10 +1526,11 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
                         "Left": "2.5785in",
-                        "Top": "7.259in",
+                        "Top": "6.259in",
                         "Width": "1in",
                         "Height": "0.25in"
                     },
@@ -1532,7 +1544,7 @@
                         },
                         "TableColumns": [
                             {
-                                "Width": "1.536cm"
+                                "Width": "1.368cm"
                             }
                         ],
                         "Header": {
@@ -1553,11 +1565,12 @@
                                                     "PaddingLeft": "2pt",
                                                     "PaddingRight": "2pt",
                                                     "PaddingTop": "2pt",
-                                                    "PaddingBottom": "2pt"
+                                                    "PaddingBottom": "2pt",
+                                                    "TextAlign": "Left"
                                                 },
                                                 "Left": "0cm",
                                                 "Top": "0cm",
-                                                "Width": "1.536cm",
+                                                "Width": "1.368cm",
                                                 "Height": "0.675cm"
                                             }
                                         }
@@ -1566,9 +1579,9 @@
                             ],
                             "RepeatOnNewPage": true
                         },
-                        "Left": "3.356cm",
-                        "Top": "16.139cm",
-                        "Width": "1.536cm",
+                        "Left": "4.06cm",
+                        "Top": "13.601cm",
+                        "Width": "1.368cm",
                         "Height": "0.675cm"
                     },
                     {
@@ -1584,11 +1597,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "13.09cm",
-                        "Top": "5.098cm",
-                        "Width": "2.5cm",
+                        "Left": "12.931cm",
+                        "Top": "5.086cm",
+                        "Width": "0.9091in",
                         "Height": "0.75cm"
                     },
                     {
@@ -1617,11 +1631,12 @@
                             "PaddingLeft": "2pt",
                             "PaddingRight": "2pt",
                             "PaddingTop": "2pt",
-                            "PaddingBottom": "2pt"
+                            "PaddingBottom": "2pt",
+                            "TextAlign": "Left"
                         },
-                        "Left": "5.117cm",
-                        "Top": "15.3cm",
-                        "Width": "3.475cm",
+                        "Left": "7.617cm",
+                        "Top": "12.732cm",
+                        "Width": "1.575cm",
                         "Height": "0.75cm"
                     },
                     {
@@ -1655,7 +1670,7 @@
                         "Details": {
                             "TableRows": [
                                 {
-                                    "Height": "0.75cm",
+                                    "Height": "0.515cm",
                                     "TableCells": [
                                         {
                                             "Item": {
@@ -1685,7 +1700,7 @@
                                                 "Left": "0cm",
                                                 "Top": "0cm",
                                                 "Width": "0.89cm",
-                                                "Height": "0.75cm"
+                                                "Height": "0.515cm"
                                             }
                                         },
                                         {
@@ -1728,7 +1743,7 @@
                                                 "Left": "0cm",
                                                 "Top": "0cm",
                                                 "Width": "2.322cm",
-                                                "Height": "0.75cm"
+                                                "Height": "0.515cm"
                                             }
                                         },
                                         {
@@ -1758,7 +1773,7 @@
                                                 "Left": "0cm",
                                                 "Top": "0cm",
                                                 "Width": "6.693cm",
-                                                "Height": "0.75cm"
+                                                "Height": "0.515cm"
                                             }
                                         },
                                         {
@@ -1785,7 +1800,7 @@
                                                 "Left": "0cm",
                                                 "Top": "0cm",
                                                 "Width": "1.48cm",
-                                                "Height": "0.75cm"
+                                                "Height": "0.515cm"
                                             }
                                         },
                                         {
@@ -1812,7 +1827,7 @@
                                                 "Left": "0cm",
                                                 "Top": "0cm",
                                                 "Width": "2.096cm",
-                                                "Height": "0.75cm"
+                                                "Height": "0.515cm"
                                             }
                                         },
                                         {
@@ -1839,7 +1854,7 @@
                                                 "Left": "0cm",
                                                 "Top": "0cm",
                                                 "Width": "2.08cm",
-                                                "Height": "0.75cm"
+                                                "Height": "0.515cm"
                                             }
                                         },
                                         {
@@ -1874,7 +1889,7 @@
                                                 "Left": "0cm",
                                                 "Top": "0cm",
                                                 "Width": "1.405cm",
-                                                "Height": "0.75cm"
+                                                "Height": "0.515cm"
                                             }
                                         }
                                     ]
@@ -1884,7 +1899,7 @@
                         "Left": "1.325cm",
                         "Top": "11.146cm",
                         "Width": "16.966cm",
-                        "Height": "0.75cm"
+                        "Height": "0.515cm"
                     }
                 ],
                 "Style": {
