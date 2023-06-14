@@ -1,4 +1,5 @@
 import "../../App.css";
+import styles from './index.module.css';
 import logo from "../../assets/logo2.png";
 import Table from "./Table"
 import { useEffect, useState } from "react"
@@ -31,9 +32,9 @@ export default function Index({ data, setDataMasv }) {
                 })
                 .catch(error => {
                     console.error(error); // Handle any errors
-                    
+
                 });
-                
+
         }
         callApi();
     }, [data]);
@@ -44,7 +45,14 @@ export default function Index({ data, setDataMasv }) {
 
     return (
         <div>
-            {datasv.length===0 && <div className="flex text-red-700 text-[30px] w-[100%] items-center justify-center py-[50px]">Không tìm thấy kết quả  </div>}
+            {datasv.length === 0 && <div className="flex text-red-700 text-[30px] w-[100%] items-center justify-center py-[50px]"><div className={styles.wrapper}>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.shadow}></div>
+                <div className={styles.shadow}></div>
+                <div className={styles.shadow}></div>
+            </div></div>}
             {datasv && datasv.map((sinhvien, index) => (
                 <div key={index}>
                     <div className="flex justify-between mt-[30px]">

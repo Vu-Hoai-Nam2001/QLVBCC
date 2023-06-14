@@ -60,6 +60,19 @@ export default function Index() {
     callApi();
   }, [user.publicMetadata.magv]);
 
+  // const callApi = async () => {
+
+  //   await fetch(`/../../api/newfileggdrive`, {
+  //     method: 'POST',
+  //     body:JSON.stringify({name:'1912101003'})
+
+  //   })
+  //     .then(response => response.json())
+  //     .then(datasv => {
+  //       setRole(datasv.users[0].role_id)
+
+  //     });
+  // }
 
   console.log(user.publicMetadata.magv)
   return (
@@ -75,6 +88,7 @@ export default function Index() {
           if (masv !== '') {
             setShow(true)
             setMasv2(masv)
+            // callApi()
           }
           else setShow(false)
 

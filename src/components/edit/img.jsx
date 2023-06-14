@@ -109,7 +109,8 @@ export default function Index({ datasv }) {
             },
             body: JSON.stringify({
                 masv: `${datasv[0].masinhvien}`,
-                nguoisua: `${user.publicMetadata.name}`
+                nguoisua: `${user.publicMetadata.name}`,
+                magiaovien:`${user.publicMetadata.magv}`
                 
             })
 
@@ -132,8 +133,8 @@ export default function Index({ datasv }) {
                     }}
                     className=""
                 />
-                {anh === undefined && datasv[0].qrcode && <img src={datasv[0].qrcode} className="w-[355px]" />}
-                {anh && <img src={anh.preview} alt="" className="w-[355px]" />}
+                {anh === undefined && datasv[0].qrcode && <img src={datasv[0].qrcode} className="w-[200px]" />}
+                {anh && <img src={anh.preview} alt="" className="w-[200px]" />}
                 <button
                     className="mt-[5px]  w-[180px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black hover:bg-red-600 hover:text-white"
                     onClick={() =>

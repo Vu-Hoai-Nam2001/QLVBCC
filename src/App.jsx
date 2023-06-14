@@ -7,6 +7,7 @@ import SignIn from "./hardComponents/signIn";
 import SignInADMIN from "./admin/hardComponent/login";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 const Home = lazy(() => import("./components/home"));
+const Search = lazy(() => import("./components/showQRcode"));
 const Teacher = lazy(() => import("./components/teacher"));
 const Student = lazy(() => import("./components/student"));
 const Edit = lazy(() => import("./components/edit"));
@@ -100,6 +101,7 @@ function App() {
         <Route path="/" element={<Hard />}>
           <Route path="/" element={<Navigate to={"/home"} />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/search/:id" element={<Search />} />
           <Route path="/teacher" element={
             <>
               <SignedIn><Teacher /></SignedIn>

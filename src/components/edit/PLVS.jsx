@@ -4,11 +4,18 @@ import { useAuth } from "@clerk/clerk-react";
 // import swal from 'sweetalert';
 import ImdEdit from "./img.jsx"
 import QRCode from 'qrcode.react';
+import Print from "./../print"
 
 export default function Index(props) {
+    const [showprint, setShowprint] = useState(false);
     //update tên đề tài 
     const [datasv, setDatasv] = useState()
+    const [show, setShow] = useState(false)
+    const [showupdate, setShowupdate] = useState(false)
+    const [dataurlqrcode, setDataurlqrcode] = useState()
     const { getToken } = useAuth();
+    const [anh, setAnh] = useState()
+
     // const [tendetai, setTendetai] = useState('')
     //update ảnh
 
@@ -63,17 +70,7 @@ export default function Index(props) {
     console.log(datasv)
     console.log(dataanh);
 
-    const [url, setUrl] = useState('');
-    const [qrCodeValue, setQrCodeValue] = useState('');
 
-    const handleUrlChange = (event) => {
-        setUrl(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setQrCodeValue(url);
-    }
     const saveImage = () => {
         const canvas = document.getElementById('qrCodeCanvas');
         const dataURL = canvas.toDataURL('image/png');
@@ -84,24 +81,76 @@ export default function Index(props) {
         link.click();
     };
 
-    console.log(qrCodeValue);
+
+    const newfileggdrive = async () => {
+
+        await fetch(`/../../api/newfileggdrive`, {
+            method: 'POST',
+            body: JSON.stringify({ name: `${props.data}` })
+
+        })
+            .then(response => response.json())
+            .then(dataurlqrcode => {
+                setDataurlqrcode(dataurlqrcode.result)
+            });
+    }
+    const updatefileggdrive = async () => {
+        const formData = new FormData();
+        formData.append('parents', '1VhNbZF6gKSgc79pitfXxoJJPnabMkl98');
+        formData.append('file', anh);
+        
+        await fetch(`/../../api/updatefileggdrive`, {
+            method: 'POST',
+            body: JSON.stringify({
+                parents: '1VhNbZF6gKSgc79pitfXxoJJPnabMkl98',
+                file: `${anh}`
+            })
+
+        })
+            .then(response => response.json())
+            .then(dataurlqrcode => {
+                setDataurlqrcode(dataurlqrcode.result)
+            });
+    }
+    console.log(dataurlqrcode);
+    // function handelChange(e) {
+    //     console.log(e);
+    //     const file = e;
+    //     file.preview = URL.createObjectURL(file)
+    //     setAnh(file)
+    // }
+
+    console.log(anh);
 
 
     return (
         <div >
-            
-            {datasv && datasv.map((sinhvien, index) => (
-                <div key={index} >
-                    <div className="flex    w-[100%] mt-[50px] ">
-                        <div className="flex flex-col w-[50%] gap-[5px]">
-                            <a>Họ và tên: <span className="font-semibold">{sinhvien.hoten}</span></a>
-                            <a>Mã sinh viên:<span className="font-semibold">{sinhvien.masinhvien}</span> </a>
-                            <a>Số CCCD: <span className="font-semibold">{sinhvien.socmnd}</span></a>
 
-                            <a>Ngày sinh: <span className="font-semibold">{sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
-                            <a>Giới tính: <span className="font-semibold">{sinhvien.goitinh}</span> </a>
-                            <a>Ngành: <span className="font-semibold">{sinhvien.tennganh} </span></a>
-                            <a>{sinhvien.tenkhoahoc.slice(0, 4)}: <span className="font-semibold">{sinhvien.tenkhoahoc.slice(4)}</span> </a>
+            {datasv && datasv.map((sinhvien, index) => (
+                <div key={index} className=" mt-[10px] justify-center" >
+                    <div className="flex justify-center text-[30px] font-semibold text-[#0083c2]">BỔ SUNG THÔNG TIN PHỤ LỤC VĂN BẰNG</div>
+                    <div className="flex    w-[100%] mt-[50px] ">
+                        <div className="flex  w-[100%] gap-[5px]">
+                            <div className="ml-[70px] flex flex-col w-[30%]">
+                                <a>Họ và tên: <span className="font-semibold"> {sinhvien.hoten}</span></a>
+                                <a>Mã sinh viên:<span className="font-semibold"> {sinhvien.masinhvien}</span> </a>
+
+                            </div>
+
+                            <div className="flex flex-col w-[30%]">
+                                <a>Số CCCD: <span className="font-semibold"> {sinhvien.socmnd}</span></a>
+                                <a>Ngày sinh: <span className="font-semibold"> {sinhvien.nganysinh.split(` `)[0].split('-').reverse().join('-')}</span> </a>
+                            </div>
+                            <div className="flex flex-col w-[30%]">
+                                <div className="flex">
+                                    <a>Giới tính: <span className="font-semibold"> {sinhvien.goitinh}</span> </a>
+                                    <a className="ml-[10px]">{sinhvien.tenkhoahoc.slice(0, 4)}: <span className="font-semibold"> {sinhvien.tenkhoahoc.slice(4)}</span> </a>
+                                </div>
+                                <a>Ngành: <span className="font-semibold"> {sinhvien.tennganh} </span></a>
+
+
+
+                            </div>
                         </div>
                     </div>
 
@@ -147,33 +196,71 @@ export default function Index(props) {
                         className="mt-[5px]  w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] border border-black hover:bg-red-600 hover:text-white">
                         Lưu Sửa Tên Đề Tài
                     </button> */}
+
+                    <div className="flex ml-[67px]  mt-[10px]">
+                        <button className="  mt-[8px] ml-[3px] w-[250px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        border border-black hover:bg-red-600 hover:text-white"
+                            onClick={() => { newfileggdrive() }}>Tạo thư mục lưu trữ mới</button>
+                        <button className="  mt-[8px] ml-[145px] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        border border-black hover:bg-red-600 hover:text-white"
+                            onClick={() => {
+                                if (props.data !== '') {
+                                    setShowprint(true)
+                                }
+                                else setShowprint(false)
+                            }} >In phụ lục văn bằng</button>
+                        <button className=" ml-[198px] mb-[10px] mt-[8px]  w-[250px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        border border-black hover:bg-red-600 hover:text-white"
+                            onClick={() => { setShowupdate(!showupdate) }}  >Cập nhật minh chứng</button>
+                    </div>
+                    <div className="flex w-[100%]  ">
+                        <div className="App ml-[70px] w-[61%]">
+
+
+                            {dataurlqrcode && (
+                                <div className="qrcode-container mt-[10px]">
+                                    <QRCode value={`https://qlvbcc-vu-hoai-nam2001.vercel.app/${props.data}`} id="qrCodeCanvas" />
+                                    <button onClick={() => {
+                                        saveImage()
+                                        setShow(true)
+                                        setDataurlqrcode()
+                                    }} className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        border border-black hover:bg-red-600 hover:text-white">Tải xuống ảnh</button>
+                                </div>
+                            )}
+                            {show && datasv && <ImdEdit datasv={datasv} />}
+                        </div>
+
+                        <div className="">
+
+                            {showupdate &&
+                                <div className="flex flex-col">
+                                    <input
+                                        type="file"
+                                        onChange={(e) => {
+
+                                            // handlePreviewImg
+                                            setAnh(e.target.files[0])
+                                        }}
+
+                                    />
+                                    <a className="mt-[5px]">Tên người trình ký:</a>
+                                    <input className="w-[100%] pl-[10px] h-[35px] mt-[5px] rounded-[8px] border border-black " placeholder="Nhập tên người trình ký" />
+                                    {/* <input  className="w-[100%] pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Nhập msv hoặc số cmt" /> */}
+                                    {/* <input value={masv} onChange={e => setMasv(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Tên " /> */}
+                                    <button className=" mt-[43px] ml-[3px] w-[130px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        border border-black hover:bg-red-600 hover:text-white" onClick={() => { updatefileggdrive() }}>Xác nhận</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    {
+                        showprint && < Print data={sinhvien.masinhvien} />
+                    }
                 </div>
             ))}
-            <div className="App ">
-                <h1>Tạo mã QRCode</h1>
-                <form onSubmit={handleSubmit} className="mb-[20px]">
-                    <input
-                        type="text"
-                        placeholder="Nhập link dẫn "
-                        value={url}
-                        onChange={handleUrlChange}
-                        className="w-[300px] pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]"
-                    />
-                    <br/>
-                    <button type="submit" className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
-                    border border-black hover:bg-red-600 hover:text-white">
-                        Tạo mã QRCode
-                    </button>
-                </form>
-                {qrCodeValue && (
-                    <div className="qrcode-container">
-                        <QRCode value={qrCodeValue} id="qrCodeCanvas" />
-                        <button onClick={saveImage } className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
-                    border border-black hover:bg-red-600 hover:text-white">Tải xuống ảnh</button>
-                    </div>
-                )}
-            </div>
-            {datasv && <ImdEdit datasv={datasv} />}
+
+
 
         </div>
     )
