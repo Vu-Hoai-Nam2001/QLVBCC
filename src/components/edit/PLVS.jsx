@@ -219,7 +219,7 @@ export default function Index(props) {
 
                             {dataurlqrcode && (
                                 <div className="qrcode-container mt-[10px]">
-                                    <QRCode value={`https://qlvbcc-vu-hoai-nam2001.vercel.app/${props.data}`} id="qrCodeCanvas" />
+                                    <QRCode value={`https://qlvbcc-vu-hoai-nam2001.vercel.app/search/${props.data}`} id="qrCodeCanvas" />
                                     <button onClick={() => {
                                         saveImage()
                                         setShow(true)
