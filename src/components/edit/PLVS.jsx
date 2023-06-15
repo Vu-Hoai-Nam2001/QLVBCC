@@ -12,7 +12,7 @@ export default function Index(props) {
     const [datasv, setDatasv] = useState()
     const [show, setShow] = useState(false)
     // const [showupdate, setShowupdate] = useState(false)
-    // const [dataurlqrcode, setDataurlqrcode] = useState()
+    const [dataurlqrcode, setDataurlqrcode] = useState()
     const { getToken } = useAuth();
     // const [anh, setAnh] = useState()
 
@@ -82,23 +82,24 @@ export default function Index(props) {
     };
 
 
-    // const newfileggdrive = async () => {
+    const newfileggdrive = async () => {
 
-    //     await fetch(`/../../api/newfileggdrive`, {
-    //         method: 'POST',
-    //         body: JSON.stringify({ name: `${props.data}` })
+        await fetch(`/../../api/newfileggdrive`, {
+            method: 'POST',
+            body: JSON.stringify({ name: `${props.data}` })
 
-    //     })
-    //         .then(response => response.json())
-    //         .then(dataurlqrcode => {
-    //             setDataurlqrcode(dataurlqrcode.result)
-    //         });
-    // }
+        })
+            .then(response => response.json())
+            .then(dataurlqrcode => {
+                setDataurlqrcode(dataurlqrcode.result)
+            });
+    }
+    console.log(dataurlqrcode);
     // const updatefileggdrive = async () => {
     //     const formData = new FormData();
     //     formData.append('parents', '1VhNbZF6gKSgc79pitfXxoJJPnabMkl98');
     //     formData.append('file', anh);
-        
+
     //     await fetch(`/../../api/updatefileggdrive`, {
     //         method: 'POST',
     //         body: JSON.stringify({
@@ -129,7 +130,7 @@ export default function Index(props) {
             {datasv && datasv.map((sinhvien, index) => (
                 <div key={index} className=" mt-[10px] justify-center" >
                     <div className="flex justify-end ">
-                        
+
                         <button className="  mt-[8px] ml-[145px] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
                         border border-black hover:bg-red-600 hover:text-white"
                             onClick={() => {
@@ -211,42 +212,40 @@ export default function Index(props) {
                         Lưu Sửa Tên Đề Tài
                     </button> */}
 
-                    
+
                     <div className="flex w-[100%]  ">
-                        <div className="App ml-[70px] w-[61%]">
+                        <div className="App ml-[70px] w-[31%] ">
 
 
-                            
-                                <div className="qrcode-container mt-[10px]">
-                                    <QRCode value={`https://qlvbcc-vu-hoai-nam2001.vercel.app/search/${props.data}`} id="qrCodeCanvas" />
-                                    <button onClick={() => {
-                                        saveImage()
-                                        setShow(true)
-    
-                                    }} className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+
+                            <div className="qrcode-container mt-[10px]">
+                                <QRCode value={`https://qlvbcc-vu-hoai-nam2001.vercel.app/search/${props.data}`} id="qrCodeCanvas" />
+                                <button onClick={() => {
+                                    saveImage()
+                                    setShow(true)
+
+                                }} className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
                                     border border-black hover:bg-red-600 hover:text-white">Tải xuống ảnh</button>
-                                </div>
-                            
+
+                            </div>
+
                             {show && datasv && <ImdEdit datasv={datasv} />}
                         </div>
 
-                        <div className="">
+                        <div className="w-[25%]">
+                            <button className=" mt-[8px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                                    border border-black hover:bg-red-600 hover:text-white"
+                                    onClick={()=>{
+                                        newfileggdrive()
+                                    }}>Tạo thư mục mới</button>
 
-                            {/* {showupdate &&
-                                <div className="flex flex-col">
-                                    <input
-                                        type="file"
-                                        onChange={(e) => {
-
-                                            // handlePreviewImg
-                                            setAnh(e.target.files[0])
-                                        }}
-
-                                    />
-                                    
-                                </div>
-                            } */}
                         </div>
+
+                        <div>
+                        <button className=" mt-[8px] ml-[32%] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                                    border border-black hover:bg-red-600 hover:text-white">Bổ sung minh chứng</button>
+                        </div>
+
                     </div>
                     {
                         showprint && < Print data={sinhvien.masinhvien} />
