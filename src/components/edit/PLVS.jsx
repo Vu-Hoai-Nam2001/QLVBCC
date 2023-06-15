@@ -11,10 +11,10 @@ export default function Index(props) {
     //update tên đề tài 
     const [datasv, setDatasv] = useState()
     const [show, setShow] = useState(false)
-    const [showupdate, setShowupdate] = useState(false)
-    const [dataurlqrcode, setDataurlqrcode] = useState()
+    // const [showupdate, setShowupdate] = useState(false)
+    // const [dataurlqrcode, setDataurlqrcode] = useState()
     const { getToken } = useAuth();
-    const [anh, setAnh] = useState()
+    // const [anh, setAnh] = useState()
 
     // const [tendetai, setTendetai] = useState('')
     //update ảnh
@@ -82,37 +82,37 @@ export default function Index(props) {
     };
 
 
-    const newfileggdrive = async () => {
+    // const newfileggdrive = async () => {
 
-        await fetch(`/../../api/newfileggdrive`, {
-            method: 'POST',
-            body: JSON.stringify({ name: `${props.data}` })
+    //     await fetch(`/../../api/newfileggdrive`, {
+    //         method: 'POST',
+    //         body: JSON.stringify({ name: `${props.data}` })
 
-        })
-            .then(response => response.json())
-            .then(dataurlqrcode => {
-                setDataurlqrcode(dataurlqrcode.result)
-            });
-    }
-    const updatefileggdrive = async () => {
-        const formData = new FormData();
-        formData.append('parents', '1VhNbZF6gKSgc79pitfXxoJJPnabMkl98');
-        formData.append('file', anh);
+    //     })
+    //         .then(response => response.json())
+    //         .then(dataurlqrcode => {
+    //             setDataurlqrcode(dataurlqrcode.result)
+    //         });
+    // }
+    // const updatefileggdrive = async () => {
+    //     const formData = new FormData();
+    //     formData.append('parents', '1VhNbZF6gKSgc79pitfXxoJJPnabMkl98');
+    //     formData.append('file', anh);
         
-        await fetch(`/../../api/updatefileggdrive`, {
-            method: 'POST',
-            body: JSON.stringify({
-                parents: '1VhNbZF6gKSgc79pitfXxoJJPnabMkl98',
-                file: `${anh}`
-            })
+    //     await fetch(`/../../api/updatefileggdrive`, {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             parents: '1VhNbZF6gKSgc79pitfXxoJJPnabMkl98',
+    //             file: `${anh}`
+    //         })
 
-        })
-            .then(response => response.json())
-            .then(dataurlqrcode => {
-                setDataurlqrcode(dataurlqrcode.result)
-            });
-    }
-    console.log(dataurlqrcode);
+    //     })
+    //         .then(response => response.json())
+    //         .then(dataurlqrcode => {
+    //             setDataurlqrcode(dataurlqrcode.result)
+    //         });
+    // }
+    // console.log(dataurlqrcode);
     // function handelChange(e) {
     //     console.log(e);
     //     const file = e;
@@ -120,7 +120,7 @@ export default function Index(props) {
     //     setAnh(file)
     // }
 
-    console.log(anh);
+    // console.log(anh);
 
 
     return (
@@ -128,6 +128,20 @@ export default function Index(props) {
 
             {datasv && datasv.map((sinhvien, index) => (
                 <div key={index} className=" mt-[10px] justify-center" >
+                    <div className="flex justify-end ">
+                        
+                        <button className="  mt-[8px] ml-[145px] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        border border-black hover:bg-red-600 hover:text-white"
+                            onClick={() => {
+                                if (props.data !== '') {
+                                    setShowprint(true)
+                                }
+                                else setShowprint(false)
+                            }} >In phụ lục văn bằng</button>
+                        {/* <button className=" ml-[198px] mb-[10px] mt-[8px]  w-[250px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        border border-black hover:bg-red-600 hover:text-white"
+                            onClick={() => { setShowupdate(!showupdate) }}  >Cập nhật minh chứng</button> */}
+                    </div>
                     <div className="flex justify-center text-[30px] font-semibold text-[#0083c2]">BỔ SUNG THÔNG TIN PHỤ LỤC VĂN BẰNG</div>
                     <div className="flex    w-[100%] mt-[50px] ">
                         <div className="flex  w-[100%] gap-[5px]">
@@ -197,43 +211,28 @@ export default function Index(props) {
                         Lưu Sửa Tên Đề Tài
                     </button> */}
 
-                    <div className="flex ml-[67px]  mt-[10px]">
-                        <button className="  mt-[8px] ml-[3px] w-[250px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
-                        border border-black hover:bg-red-600 hover:text-white"
-                            onClick={() => { newfileggdrive() }}>Tạo thư mục lưu trữ mới</button>
-                        <button className="  mt-[8px] ml-[145px] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
-                        border border-black hover:bg-red-600 hover:text-white"
-                            onClick={() => {
-                                if (props.data !== '') {
-                                    setShowprint(true)
-                                }
-                                else setShowprint(false)
-                            }} >In phụ lục văn bằng</button>
-                        <button className=" ml-[198px] mb-[10px] mt-[8px]  w-[250px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
-                        border border-black hover:bg-red-600 hover:text-white"
-                            onClick={() => { setShowupdate(!showupdate) }}  >Cập nhật minh chứng</button>
-                    </div>
+                    
                     <div className="flex w-[100%]  ">
                         <div className="App ml-[70px] w-[61%]">
 
 
-                            {dataurlqrcode && (
+                            
                                 <div className="qrcode-container mt-[10px]">
                                     <QRCode value={`https://qlvbcc-vu-hoai-nam2001.vercel.app/search/${props.data}`} id="qrCodeCanvas" />
                                     <button onClick={() => {
                                         saveImage()
                                         setShow(true)
-                                        setDataurlqrcode()
+    
                                     }} className=" mt-[8px] ml-[3px] w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
-                        border border-black hover:bg-red-600 hover:text-white">Tải xuống ảnh</button>
+                                    border border-black hover:bg-red-600 hover:text-white">Tải xuống ảnh</button>
                                 </div>
-                            )}
+                            
                             {show && datasv && <ImdEdit datasv={datasv} />}
                         </div>
 
                         <div className="">
 
-                            {showupdate &&
+                            {/* {showupdate &&
                                 <div className="flex flex-col">
                                     <input
                                         type="file"
@@ -244,14 +243,9 @@ export default function Index(props) {
                                         }}
 
                                     />
-                                    <a className="mt-[5px]">Tên người trình ký:</a>
-                                    <input className="w-[100%] pl-[10px] h-[35px] mt-[5px] rounded-[8px] border border-black " placeholder="Nhập tên người trình ký" />
-                                    {/* <input  className="w-[100%] pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Nhập msv hoặc số cmt" /> */}
-                                    {/* <input value={masv} onChange={e => setMasv(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px]" placeholder="Tên " /> */}
-                                    <button className=" mt-[43px] ml-[3px] w-[130px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
-                        border border-black hover:bg-red-600 hover:text-white" onClick={() => { updatefileggdrive() }}>Xác nhận</button>
+                                    
                                 </div>
-                            }
+                            } */}
                         </div>
                     </div>
                     {
