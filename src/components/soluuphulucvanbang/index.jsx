@@ -156,7 +156,7 @@ export default function index() {
                         <a className="font-semibold text-[#0083c2] mt-[30]">Nhập số quyết định:</a>
                         <input value={soquyetdinh} onChange={e => setSoquyetdinh(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px] " placeholder="Nhập số quyết định" />
                         <a className="font-semibold text-[#0083c2] mt-[30]">Nhập số lần cấp:</a>
-                        <input value={solancap} type="number" min={0} max={100} onChange={e => setSolancap(e.target.value)} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px] " placeholder="Lần cấp thứ:" />
+                        <input value={solancap} type="number" min={0} max={100} onChange={e => {e.target.value<0 ? setSolancap(0):setSolancap(e.target.value) }} className="w-full pl-[10px] h-[35px] rounded-[8px] border border-black mt-[5px] " placeholder="Lần cấp thứ:" />
 
                     </div>
                 </div>
