@@ -2,17 +2,17 @@ import "../../App.css";
 import { useEffect, useState } from "react"
 import { useAuth, useClerk } from "@clerk/clerk-react";
 // import swal from 'sweetalert';
-import ImdEdit from "./img.jsx"
-import QRCode from 'qrcode.react';
-import Print from "./../print"
+// import ImdEdit from "./img.jsx"
+// import QRCode from 'qrcode.react';
+// import Print from "./../print"
 import swal from 'sweetalert';
 
 export default function Index(props) {
     const { user } = useClerk();
-    const [showprint, setShowprint] = useState(false);
+    // const [showprint, setShowprint] = useState(false);
     //update tên đề tài 
     const [datasv, setDatasv] = useState()
-    const [show, setShow] = useState(false)
+    // const [show, setShow] = useState(false)
     // const [showupdate, setShowupdate] = useState(false)
     const [dataurlqrcode, setDataurlqrcode] = useState()
     const { getToken } = useAuth();
@@ -56,7 +56,7 @@ export default function Index(props) {
                 magv: `${user.publicMetadata.magv}`,
                 linkdrive: `https://drive.google.com/drive/u/2/folders/${dataurlqrcode}`,
                 nguoitao: `${user.publicMetadata.name}`,
-                loaihocvan: `phulucvanbang`
+                loaihocvan: `chungchi`
             })
 
         })
@@ -72,7 +72,7 @@ export default function Index(props) {
         console.log("gọi lại api")
         const callApi = async () => {
 
-            await fetch(`https://qlvbcc.hasura.app/api/rest/get_minhchung/${props.data}/phulucvanbang`, {
+            await fetch(`https://qlvbcc.hasura.app/api/rest/get_minhchung/${props.data}/chungchi`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -124,15 +124,15 @@ export default function Index(props) {
     console.log(dataluuminhchung);
     console.log(minhchung);
 
-    const saveImage = () => {
-        const canvas = document.getElementById('qrCodeCanvas');
-        const dataURL = canvas.toDataURL('image/png');
+    // const saveImage = () => {
+    //     const canvas = document.getElementById('qrCodeCanvas');
+    //     const dataURL = canvas.toDataURL('image/png');
 
-        const link = document.createElement('a');
-        link.href = dataURL;
-        link.download = 'qrcode.png';
-        link.click();
-    };
+    //     const link = document.createElement('a');
+    //     link.href = dataURL;
+    //     link.download = 'qrcode.png';
+    //     link.click();
+    // };
 
 
     const newfileggdrive = async () => {
@@ -196,19 +196,19 @@ export default function Index(props) {
                 <div key={index} className=" mt-[10px] justify-center" >
                     <div className="flex justify-end ">
 
-                        <button className="  mt-[8px] ml-[145px] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        {/* <button className="  mt-[8px] ml-[145px] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
                         border border-black hover:bg-red-600 hover:text-white"
                             onClick={() => {
                                 if (props.data !== '') {
                                     setShowprint(true)
                                 }
                                 else setShowprint(false)
-                            }} >In phụ lục văn bằng</button>
+                            }} >In phụ lục văn bằng</button> */}
                         {/* <button className=" ml-[198px] mb-[10px] mt-[8px]  w-[250px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
                         border border-black hover:bg-red-600 hover:text-white"
                             onClick={() => { setShowupdate(!showupdate) }}  >Cập nhật minh chứng</button> */}
                     </div>
-                    <div className="flex justify-center text-[30px] font-semibold text-[#0083c2]">BỔ SUNG THÔNG TIN PHỤ LỤC VĂN BẰNG</div>
+                    <div className="flex justify-center text-[30px] font-semibold text-[#0083c2]">BỔ SUNG MINH CHỨNG CHỨNG CHỈ</div>
                     <div className="flex    w-[100%] mt-[50px] ">
                         <div className="flex  w-[100%] gap-[5px]">
                             <div className="ml-[70px] flex flex-col w-[30%]">
@@ -278,8 +278,8 @@ export default function Index(props) {
                     </button> */}
 
 
-                    <div className="flex w-[100%]  ">
-                        <div className="App ml-[70px] w-[31%] ">
+                    <div className="flex w-[100%] ml-[5.5%] ">
+                        {/* <div className="App ml-[70px] w-[31%] ">
 
 
 
@@ -295,10 +295,10 @@ export default function Index(props) {
                             </div>
 
                             {show && datasv && <ImdEdit datasv={datasv} />}
-                        </div>
+                        </div> */}
 
                         {minhchung !== undefined ? <div className="w-[25%]">
-                            <button className="  mt-[45%]  w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                            <button className="    w-[150px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
                                     border border-black hover:bg-red-600 hover:text-white"
                                 onClick={() => {
                                     newfileggdrive()
@@ -309,18 +309,18 @@ export default function Index(props) {
 
 
 
-                        {minhchung.length !== 0 && <div>
-                            <button className=" mt-[75%] ml-[32%] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+                        <div>
+                            <button className="  ml-[32%] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
                                     border border-black hover:bg-red-600 hover:text-white" onClick={() => {
                                     { minhchung !== "" ? handleClickBosung() : handleClickBosung(); callApiluuminhchung() }
 
                                 }}>Bổ sung minh chứng</button>
-                        </div>}
+                        </div>
 
                     </div>
-                    {
+                    {/* {
                         showprint && < Print data={sinhvien.masinhvien} />
-                    }
+                    } */}
                 </div>
             ))}
 

@@ -11,6 +11,8 @@ const Search = lazy(() => import("./components/showQRcode"));
 const Teacher = lazy(() => import("./components/teacher"));
 const Student = lazy(() => import("./components/student"));
 const Edit = lazy(() => import("./components/edit"));
+const Vanbang = lazy(() => import("./components/bosungvanbang"));
+const Chungchi = lazy(() => import("./components/bosungchungchi"));
 const Print = lazy(() => import("./components/print"));
 const Soluu = lazy(() => import("./components/soluuphulucvanbang"));
 import ResetPass from "./hardComponents/resetPass";
@@ -125,6 +127,14 @@ function App() {
           } />
           <Route path="/edit" element={<>
             <SignedIn><Edit /></SignedIn>
+            <SignedOut><Navigate to={'/home'} replace /></SignedOut>
+          </>} />
+          <Route path="/bosungvanbang" element={<>
+            <SignedIn><Vanbang /></SignedIn>
+            <SignedOut><Navigate to={'/home'} replace /></SignedOut>
+          </>} />
+          <Route path="/bosungchungchi" element={<>
+            <SignedIn><Chungchi /></SignedIn>
             <SignedOut><Navigate to={'/home'} replace /></SignedOut>
           </>} />
           <Route path="/soluuvanbangchungchi" element={<>

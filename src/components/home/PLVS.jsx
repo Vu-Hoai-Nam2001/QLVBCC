@@ -32,7 +32,7 @@ export default function Index({ masv}) {
     //   const { getToken } = useAuth();
 
     useEffect(() => {
-        fetch(`https://qlvbcc.hasura.app/api/rest/get_ttsv_sohieubang/${masv}`, {
+        fetch(`https://qlvbcc.hasura.app/api/rest/get_timkiem_ttsv/${masv}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'x-hasura-admin-secret': 'SeALKpEjjdBd2xlGyBXtGPjU9C46BocE6P3DERIgB8sJhPGvUH57qvh7QnMW4e9c'
@@ -40,7 +40,7 @@ export default function Index({ masv}) {
         })
             .then(response => response.json())
             .then(datasv => {
-                setDatasv(datasv.f_get_ttsv2
+                setDatasv(datasv.f_get_ttsv5
                 )
             })
             .catch(error => {
