@@ -58,24 +58,15 @@ export default function Index() {
   return (
     <main className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[30px] min-h-[420px]">
 
-      <div className="flex justify-center">
-        <ul className="flex space-x-4">
-          <li
-            className={`cursor-pointer ${activeItem === 'phu_luc' ? 'text-blue-500 font-semibold' : ''}`}
-            onClick={() => handleItemClick('phu_luc')}
-          >
+      <div className="flex justify-center border border-gray-500">
+        <ul className="flex space-x-4 divide-x divide-gray-500">
+          <li className={`  cursor-pointer ${activeItem === 'phu_luc' ? 'text-blue-500 font-semibold' : ''}`} onClick={() => handleItemClick('phu_luc')}>
             Tìm kiếm phụ lục văn bằng
           </li>
-          <li
-            className={`cursor-pointer ${activeItem === 'chung_chi' ? 'text-blue-500 font-semibold' : ''}`}
-            onClick={() => handleItemClick('chung_chi')}
-          >
+          <li className={`ml-[30px] cursor-pointer ${activeItem === 'chung_chi' ? 'text-blue-500 font-semibold' : ''}`} onClick={() => handleItemClick('chung_chi')}>
             Tìm kiếm chứng chỉ
           </li>
-          <li
-            className={`cursor-pointer ${activeItem === 'van_bang' ? 'text-blue-500 font-semibold' : ''}`}
-            onClick={() => handleItemClick('van_bang')}
-          >
+          <li className={`cursor-pointer ${activeItem === 'van_bang' ? 'text-blue-500 font-semibold' : ''}`} onClick={() => handleItemClick('van_bang')}>
             Tìm kiếm văn bằng
           </li>
         </ul>
@@ -118,7 +109,7 @@ export default function Index() {
               else setShow(false)
 
 
-            }}  className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+            }} className=" mt-[8px] ml-[3px] w-[120px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
       border border-black hover:bg-red-600 hover:text-white ">TÌm kiếm</button>
           </div>
 
