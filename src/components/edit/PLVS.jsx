@@ -309,13 +309,13 @@ export default function Index(props) {
 
 
 
-                        {minhchung.length !== 0 && <div>
+                         <div>
                             <button className=" mt-[75%] ml-[32%] w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
                                     border border-black hover:bg-red-600 hover:text-white" onClick={() => {
                                     { minhchung !== "" ? handleClickBosung() : handleClickBosung(); callApiluuminhchung() }
 
                                 }}>Bổ sung minh chứng</button>
-                        </div>}
+                        </div>
 
                     </div>
                     {
