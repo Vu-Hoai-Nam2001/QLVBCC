@@ -59,14 +59,6 @@ export default function Index({ datasv }) {
         setImage(e)
     }
 
-
-
-    // const handlePreviewImg = (e) =>{
-    //   const file = e.target.files[0]
-    //   file.preview = URL.createObjectURL(file)
-    //   setAnh(file)
-    // }
-
     async function submitImage() {
         const data = new FormData()
         data.append("file", image)
@@ -83,12 +75,6 @@ export default function Index({ datasv }) {
                 setLinkanh(data.url)
                 console.log(data);
                 swal("Cập nhật ảnh thành công!", "Nhấn OK để tiếp tục!", "success").then(() => {
-                    // window.location.href = "/edit";
-                    // handleClick();
-                    // swal("Lưu thành công!", "Nhấn OK để thoát!", "success").then(() => {
-
-                    //     window.location.href = "/edit";
-                    // });
                 });
 
             }).catch((err) => {

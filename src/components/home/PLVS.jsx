@@ -3,33 +3,15 @@ import logo from "../../assets/logo2.png";
 import styles from './index.module.css';
 import Table from "./Table"
 import { useEffect, useState } from "react"
-//import { useAuth } from "@clerk/clerk-react";
 
-// const data = {
-//     "name": "Hoài Nam",
-//     sex: "Nam",
-//     MSV: "191201003",
-//     SoCCCD: "1029831",
-//     Hinhthucdaotao: "Chính Quy",
-//     TRinhDoDT: "THPT",
-//     ngonngu: "Tiếng việt",
-//     ngaysinh: "26/01/2001",
-//     khoa: "k21",
-//     chuyennganh: "CNTT",
-//     ngaynhaphoc: "1/1/2019",
-//     thoigiandaotao: "4 năm",
-//     tendetaitotnghiep: "làm web",
-//     DTBTK: "3",
-//     TSTC: "118",
-//     XHTN: "Khá",
-//     SHVB: "123123",
-//     SVSNCB: "234234",
-// }
-export default function Index({ masv}) {
+export default function Index({masv}) {
     const [datasv, setDatasv] = useState([])
     const [tinchi, setTinchi] = useState(0)
 
-    //   const { getToken } = useAuth();
+    useEffect(()=>{
+        setDatasv([])
+    },[masv])
+
 
     useEffect(() => {
         fetch(`https://qlvbcc.hasura.app/api/rest/get_timkiem_ttsv/${masv}`, {
@@ -49,29 +31,6 @@ export default function Index({ masv}) {
             });
     }, [masv])
     
-    // useEffect(() => {
-    //     console.log("gọi lại api")
-    //     const callApi = async () => {
-
-    //         await fetch(`${import.meta.env.VITE_ABOUT_STUDENT_SEARCH_MSV}${props.data}`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${await getToken({
-    //                     template: import.meta.env.VITE_TEMPLATE_STUDENT_QLVBCC
-    //                 })}`,
-    //             },
-    //             // body:JSON.stringify({masv:'1912101003'})
-
-    //         })
-    //             .then(response => response.json())
-    //             .then(datasv => {
-    //                 setDatasv(datasv.f_get_ttsv)
-
-    //             });
-    //     }
-    //     callApi();
-    // }, [props.data]);
     console.log(datasv)
 
     return (
@@ -123,7 +82,7 @@ export default function Index({ masv}) {
 
                             <a>Hình thức đào tạo:<span className="font-semibold">{sinhvien.hedaotao}</span> </a>
 
-                            <a>Trình độ đào tạo: ..........</a>
+                            <a>Trình độ đào tạo: </a>
                         </div>
                         <div className="flex flex-col w-[50%] gap-[5px]">
                             <a>Ngôn ngữ đào tạo:<span className="font-semibold">Tiếng việt</span> </a>

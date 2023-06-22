@@ -40,17 +40,17 @@ export default function index() {
     callApi();
 }, [masv]);
 
-  const handleClickxemminhchung = () => {
-    const url = `https://drive.google.com/drive/u/2/folders/${dataurlqrcode}`;
-    window.location.href = url;
-  };
+  // const handleClickxemminhchung = () => {
+  //   const url = `https://drive.google.com/drive/u/2/folders/${dataurlqrcode}`;
+  //   window.location.href = url;
+  // };
   return (
     <div>
       <div className='flex justify-end mt-[30px]'>
-        <button className=" w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
+        {/* <button className=" w-[200px] bg-[#0083c2] rounded-[15px] h-[32px] text-white
             border border-black hover:bg-red-600 hover:text-white" onClick={() => {
             handleClickxemminhchung()
-          }}>Xem minh chứng</button>
+          }}>Xem minh chứng</button> */}
       </div>
       {masv && <div className="flex flex-col  mt-[30px] w-[1300px] max-w[100%] mx-auto mb-[15px] min-h-[420px]"><PLVBST masv={masv} /> </div>}
     </div>

@@ -8,13 +8,10 @@ import SignInADMIN from "./admin/hardComponent/login";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 const Home = lazy(() => import("./components/home"));
 const Search = lazy(() => import("./components/showQRcode"));
-const Teacher = lazy(() => import("./components/teacher"));
-const Student = lazy(() => import("./components/student"));
 const Edit = lazy(() => import("./components/edit"));
-const Vanbang = lazy(() => import("./components/bosungvanbang"));
-const Chungchi = lazy(() => import("./components/bosungchungchi"));
+
 const Print = lazy(() => import("./components/print"));
-const Soluu = lazy(() => import("./components/soluuphulucvanbang"));
+
 import ResetPass from "./hardComponents/resetPass";
 import ReactLoading from "react-loading";
 
@@ -72,7 +69,7 @@ function App() {
 
       <Routes>
         <Route path="/signin" element={<>
-          <SignedIn><Navigate to={'/teacher'} replace /></SignedIn>
+          <SignedIn><Navigate to={'/home'} replace /></SignedIn>
           <SignedOut><SignIn /></SignedOut>
         </>} />
         <Route
@@ -105,42 +102,17 @@ function App() {
           <Route path="/" element={<Navigate to={"/home"} />} />
           <Route path="/home" element={<Home />} />
           <Route path="/search/:id" element={<Search />} />
-          <Route path="/teacher" element={
-            <>
-              <SignedIn><Teacher /></SignedIn>
-              <SignedOut><Navigate to={'/home'} replace /></SignedOut>
-            </>
-          } />
-          <Route path="/student" element={
-            <>
-              <Student />
-              {/* <SignedIn><Student /></SignedIn>
-              <SignedOut><RedirectToSignIn /></SignedOut> */}
-            </>
-          } />
+          
           <Route path="/print" element={
             <>
               <Print />
-              {/* <SignedIn><Student /></SignedIn>
-              <SignedOut><RedirectToSignIn /></SignedOut> */}
             </>
           } />
           <Route path="/edit" element={<>
             <SignedIn><Edit /></SignedIn>
             <SignedOut><Navigate to={'/home'} replace /></SignedOut>
           </>} />
-          <Route path="/bosungvanbang" element={<>
-            <SignedIn><Vanbang /></SignedIn>
-            <SignedOut><Navigate to={'/home'} replace /></SignedOut>
-          </>} />
-          <Route path="/bosungchungchi" element={<>
-            <SignedIn><Chungchi /></SignedIn>
-            <SignedOut><Navigate to={'/home'} replace /></SignedOut>
-          </>} />
-          <Route path="/soluuvanbangchungchi" element={<>
-            <SignedIn><Soluu /></SignedIn>
-            <SignedOut><Navigate to={'/home'} replace /></SignedOut>
-          </>} />
+        
 
         </Route>
         <Route path="/signinadmin" element={<>

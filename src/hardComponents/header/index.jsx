@@ -40,10 +40,7 @@ export default function Index() {
           {isOpen && (
             <ul className="dropdown-content absolute bg-sky-600  text-white pt-1 w-[190px]">
               <li><a className="rounded-t bg-sky-600  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/edit">Cấp phát phụ lục văn bằng</a></li>
-              <li><a className="bg-sky-600  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/teacher">Tìm kiếm</a></li>
-              <li><a className="bg-sky-600  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/bosungvanbang">Bổ sung minh chứng văn bằng</a></li>
-              <li><a className="bg-sky-600  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/bosungchungchi">Bổ sung minh chứng chứng chỉ</a></li>
-              <li><a className="bg-sky-600  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/soluuvanbangchungchi">Tra cứu văn bằng </a></li>
+              <li><a className="bg-sky-600  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/home">Tìm kiếm</a></li>
               <li><a className="rounded-b bg-sky-600  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={() => signOut()}>Đăng xuất</a></li>
             </ul>
           )}

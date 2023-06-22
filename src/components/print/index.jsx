@@ -1,8 +1,7 @@
 import React from "react";
 import "@grapecity/activereports/pdfexport";
 import { Viewer } from "@grapecity/activereports-react";
-// import { FontStore } from "@grapecity/activereports/core";
-// FontStore.registerFonts("fontsConfig.json");
+
 
 export default function Index(pros) {
   const viewerRef = React.useRef();
